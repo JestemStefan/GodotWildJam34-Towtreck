@@ -3,8 +3,10 @@ class_name State
 
 var stateMachine
 var target: Node
-var stateType
 var isCurrent: bool
+
+export(String) var stateType
+export(bool) var isDefault
 
 func OnStateLoad(parameters: Array):
 	assert(false, "Please override `OnStateLoad()` in state script.")
