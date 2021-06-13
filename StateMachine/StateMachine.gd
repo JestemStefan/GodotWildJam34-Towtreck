@@ -1,4 +1,4 @@
-extends Node2D
+extends Spatial
 class_name StateMachine
 
 const StateClass = preload("res://StateMachine/State.gd")
@@ -14,6 +14,7 @@ func setTarget(value):
 		state.Target = value
 
 func _ready():
+	target = owner
 	for node in get_children():
 		if node is StateClass:
 			RegisterState(node.stateType, node, node.isDefault)
@@ -33,7 +34,7 @@ func RegisterState(type, state: State, default = false):
 		SetState(type, true)
 
 func SetState(type, force = false, parameters = []):
-	if !force && type != currentStateType:
+	if !force && type == currentStateType:
 		return
 	
 	var incomingState: State = states[type]

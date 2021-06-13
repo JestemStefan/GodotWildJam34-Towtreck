@@ -1,8 +1,8 @@
-extends Node2D
+extends Spatial
 class_name State
 
 var stateMachine
-var target: Node
+var target: Spatial
 var isCurrent: bool
 
 export(String) var stateType

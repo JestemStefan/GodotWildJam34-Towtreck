@@ -6,6 +6,7 @@ var planet_weight: float = 1
 
 
 func _ready():
+	add_to_group("planets", true)
 	update_size()
 
 
