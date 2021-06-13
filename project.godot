@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Spatial",
+"class": "Planet",
+"language": "GDScript",
+"path": "res://src/Test_Planet.gd"
+}, {
+"base": "Spatial",
 "class": "State",
 "language": "GDScript",
 "path": "res://StateMachine/State.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://StateMachine/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"Planet": "",
 "State": "",
 "StateMachine": ""
 }
@@ -34,7 +40,6 @@ config/icon="res://icon.png"
 
 window/size/width=1920
 window/size/height=1080
-window/stretch/shrink=3.0
 
 [importer_defaults]
 
