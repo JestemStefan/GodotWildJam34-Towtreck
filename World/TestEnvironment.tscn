@@ -3,23 +3,24 @@
 [ext_resource path="res://art/planet/Planet_v1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player3d.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Camera.gd" type="Script" id=3]
-
-[sub_resource type="StreamTexture" id=1]
-flags = 7
-load_path = "res://.import/392777.jpg-00872aa57c6242166e3ef7d61fecedd2.s3tc.stex"
+[ext_resource path="res://World/space.jpg" type="Texture" id=4]
 
 [node name="TestEnvironment" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 50, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 0 )
 script = ExtResource( 3 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -20, 0 )
-texture = SubResource( 1 )
+texture = ExtResource( 4 )
 
 [node name="Planet_v1" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9077, 0, -9.04532 )
+planet_weight = 50.0
+
+[node name="Planet_v2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4019, 0, 14.3479 )
+planet_weight = 50.0
