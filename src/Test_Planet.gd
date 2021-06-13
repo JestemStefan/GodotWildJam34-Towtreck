@@ -2,7 +2,7 @@ extends Spatial
 class_name Planet
 
 # Planet stats
-var planet_weight: float = 1
+export var planet_weight: float = 1
 
 
 func _ready():
