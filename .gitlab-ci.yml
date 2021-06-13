@@ -21,8 +21,8 @@ web:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/web/
-  only:
-    - main
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 windows:
   stage: export
@@ -32,8 +32,8 @@ windows:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/windows/
-  only:
-    - main
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 linux:
   stage: export
@@ -43,8 +43,8 @@ linux:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/linux/
-  only:
-    - main
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 macosx:
   stage: export
@@ -54,8 +54,8 @@ macosx:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/macosx/
-  only:
-    - main
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 pages:
   stage: deploy
@@ -67,5 +67,5 @@ pages:
   artifacts:
     paths:
       - public
-  only:
-    - main
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
