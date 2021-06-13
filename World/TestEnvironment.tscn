@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://World/TestTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Player/Ship.tscn" type="PackedScene" id=2]
+
+[node name="TestEnvironment" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( -1048606, 0, 0, -1114112, 0, 0, 65506, 0, 0, 0, 0, 0 )
+
+[node name="Ship" parent="." instance=ExtResource( 2 )]

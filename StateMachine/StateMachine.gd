@@ -1,4 +1,4 @@
-extends Spatial
+extends Node2D
 class_name StateMachine
 
 const StateClass = preload("res://StateMachine/State.gd")
