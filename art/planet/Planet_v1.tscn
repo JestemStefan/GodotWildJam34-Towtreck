@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://art/planet/CloudMaterial.tres" type="Material" id=1]
+[ext_resource path="res://art/planet/PlanetMaterial.tres" type="Material" id=2]
+[ext_resource path="res://src/Test_Planet.gd" type="Script" id=3]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="SphereMesh" id=2]
+material = ExtResource( 1 )
+radius = 1.01
+height = 2.02
+
+[node name="Planet_v1" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="PlanetsSurface" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Clouds" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
