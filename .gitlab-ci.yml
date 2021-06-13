@@ -21,6 +21,8 @@ web:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/web/
+  only:
+    - main
 
 windows:
   stage: export
@@ -30,6 +32,8 @@ windows:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/windows/
+  only:
+    - main
 
 linux:
   stage: export
@@ -39,6 +43,8 @@ linux:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/linux/
+  only:
+    - main
 
 macosx:
   stage: export
@@ -48,6 +54,8 @@ macosx:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/macosx/
+  only:
+    - main
 
 pages:
   stage: deploy
@@ -59,3 +67,5 @@ pages:
   artifacts:
     paths:
       - public
+  only:
+    - main
