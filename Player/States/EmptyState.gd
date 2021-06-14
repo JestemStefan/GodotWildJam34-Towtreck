@@ -1,5 +1,7 @@
 extends State
 
+const VectorUtils = preload("res://Utils/VectorUtils.gd")
+
 var planets: Array
 
 func OnStateLoad(parameters: Array):
@@ -9,13 +11,15 @@ func OnStateUnload():
 	pass
 
 func Process(delta: float):
-	planets = get_tree().get_nodes_in_group("planets")
+	if planets.size() == 0:
+		planets = get_tree().get_nodes_in_group("planets")
+	
 	if Input.is_action_just_pressed("select"):
 		var nearest = planets[0]
-		var nearestDistance = GetDistance(nearest)
+		var nearestDistance = VectorUtils.GetDistance(target, nearest)
 		
 		for planet in planets:
-			var distance = GetDistance(planet)
+			var distance = VectorUtils.GetDistance(target, planet)
 			if distance < nearestDistance:
 				nearestDistance = distance
 				nearest = planet
@@ -33,5 +37,3 @@ func Draw():
 func Input(event: InputEvent):
 	pass
 
-func GetDistance(toWhere: Spatial) -> float:
-	return target.global_transform.origin.distance_to(toWhere.global_transform.origin)
