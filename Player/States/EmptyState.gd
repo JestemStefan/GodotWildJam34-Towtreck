@@ -20,7 +20,8 @@ func Process(delta: float):
 				nearestDistance = distance
 				nearest = planet
 		
-		if nearestDistance < 10:
+		if nearestDistance < 25:
+			(nearest as Planet).hook_to_ship()
 			stateMachine.SetState("towing", false, [nearest])
 
 func PhysicsProcess(delta: float):

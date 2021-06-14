@@ -5,11 +5,13 @@
 [ext_resource path="res://src/Test_Planet.gd" type="Script" id=3]
 
 [sub_resource type="SphereMesh" id=1]
+radius = 2.0
+height = 4.0
 
 [sub_resource type="SphereMesh" id=2]
 material = ExtResource( 1 )
-radius = 1.01
-height = 2.02
+radius = 2.02
+height = 4.04
 
 [node name="Planet_v1" type="Spatial"]
 script = ExtResource( 3 )
