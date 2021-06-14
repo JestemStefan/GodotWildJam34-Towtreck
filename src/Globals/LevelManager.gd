@@ -46,7 +46,7 @@ func create_new_orbit_spot(planet_pos: Vector3) -> Position3D:
 	current_sun.get_node("Orbits").add_child(orbit)
 	
 	# set orbital period based on distance 
-	orbit.orbital_speed  = 1000 / pow(current_sun.global_transform.origin.distance_to(planet_pos), 2)
+	orbit.orbital_speed  = 250 / pow(current_sun.global_transform.origin.distance_to(planet_pos), 2)
 	
 	# add orbital spot on this orbit
 	orbit.add_child(orbit_spot)
