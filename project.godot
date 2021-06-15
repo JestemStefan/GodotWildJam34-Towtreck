@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Planet",
 "language": "GDScript",
-"path": "res://src/Test_Planet.gd"
+"path": "res://src/CelestialBodies/Planet.gd"
 }, {
 "base": "KinematicBody",
 "class": "Player",

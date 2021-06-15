@@ -64,7 +64,6 @@ func update_size():
 		planet_weight = 1
 		self.scale = Vector3.ONE
 
-
 # try to put planet in orbit
 func unhook_to_orbit() -> int:
 	
