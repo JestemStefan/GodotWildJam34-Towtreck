@@ -11,7 +11,7 @@ var orbital_parking_spot: Position3D = null
 
 
 func _ready():
-	add_to_group("planets", true)
+	add_to_group("celestial_bodies", true)
 	update_size()
 
 

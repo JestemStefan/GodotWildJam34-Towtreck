@@ -3,7 +3,7 @@ extends State
 const VectorUtils = preload("res://Utils/VectorUtils.gd")
 const MovingResource = preload("res://Player/MovingResource.tscn")
 
-var towingTarget: Planet
+var towingTarget
 var succTarget: GameResource
 var resources: Array
 var isSucc = false
@@ -26,9 +26,14 @@ func Process(delta: float):
 	if Input.is_action_just_pressed("select"):
 		
 		# Check if towing target CAN be placed in orbit
-		if towingTarget.unhook_to_orbit() == OK:
-			stateMachine.SetState("empty")
+		if towingTarget is Planet:
+			if towingTarget.unhook_to_orbit() == OK:
+				stateMachine.SetState("empty")
 		
+		elif towingTarget is Sun:
+			(towingTarget as Sun).unhook_from_ship()
+			stateMachine.SetState("empty")
+			
 	if Input.is_action_pressed("succ"):
 		var nearestSucc = resources[0]
 		var nearestDistance = VectorUtils.GetDistance(target, nearestSucc)

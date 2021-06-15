@@ -1,4 +1,5 @@
 extends KinematicBody
+class_name Player
 
 export var speed = 4.0
 export var turnSpeed = 3.0
