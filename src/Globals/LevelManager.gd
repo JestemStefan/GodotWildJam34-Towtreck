@@ -9,6 +9,10 @@ var orbit_spacing: float = 25
 
 var isSunPlacedCorrectly: bool = false
 
+var task_orbit_1: float = 50
+var task_orbit_2: float = 100
+var orbit_tasks: Array = [task_orbit_1, task_orbit_2]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -32,6 +36,9 @@ func get_free_orbit(planet) -> Position3D:
 	# add to list of occupied orbits and return true
 	occupied_orbits.append(requested_orbit_r)
 	print(occupied_orbits)
+	
+	# check if all tasks are done
+	isLevelCompleted()
 	
 	# create new orbital spot and return
 	return create_new_orbit_spot(planet.global_transform.origin)
@@ -64,6 +71,9 @@ func release_orbit(orbital_spot: Position3D):
 	
 	# delete orbit from the list so it will became available
 	var orbit_r: float = round(current_sun.global_transform.origin.distance_to(orbital_spot.global_transform.origin))
+	
+	print_debug("orbit to release: " + str(orbit_r))
+	print_debug(occupied_orbits)
 	occupied_orbits.erase(orbit_r)
 	
 	# delete orbit and orbital spot
@@ -78,3 +88,19 @@ func sun_placed():
 
 func sun_taken():
 	isSunPlacedCorrectly = false
+
+
+func isLevelCompleted():
+	var expected_orbits: Array = orbit_tasks.duplicate(true)
+	
+	for orbit in occupied_orbits:
+		for exptected_orbit in expected_orbits:
+			if abs(exptected_orbit - orbit) < 10:
+				expected_orbits.erase(exptected_orbit)
+	
+	if expected_orbits.empty():
+		print("All tasks done")
+	
+	else:
+		print("Current orbits: " + str(occupied_orbits) + ", Expected: " + str(orbit_tasks))
+		print("Missed: " + str(expected_orbits))
