@@ -61,5 +61,16 @@ shape = SubResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 4 )
 
+[node name="PlanetStats" type="Label" parent="."]
+margin_top = -72.0
+margin_right = 151.0
+margin_bottom = -1.0
+text = "100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_area_body_exited"]
