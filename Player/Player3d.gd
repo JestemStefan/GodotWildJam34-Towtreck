@@ -8,6 +8,7 @@ export var velocityFall = 2.0
 var velocity = Vector3.ZERO
 var turn = 0
 var nearbyCelestialBody
+var nearbyResourceCloud
 
 func _physics_process(delta: float):
 	var turnChange = (Input.get_action_strength("turn_left") - Input.get_action_strength("turn_right")) * delta * turnSpeed
@@ -30,3 +31,10 @@ func CelestialAreaEntered(object):
 func CelestialAreaExited(object):
 	if nearbyCelestialBody == object:
 		nearbyCelestialBody = null
+
+func ResourceAreaEntered(object):
+	nearbyResourceCloud = object
+	
+func ResourceAreaExited(object):
+	if nearbyResourceCloud == object:
+		nearbyResourceCloud = null
