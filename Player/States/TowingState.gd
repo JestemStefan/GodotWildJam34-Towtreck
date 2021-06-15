@@ -69,6 +69,7 @@ func Input(event: InputEvent):
 	pass
 	
 func TurnOnSucc(nearestSucc: GameResource):
+	
 	path.curve.add_point(nearestSucc.global_transform.origin - target.global_transform.origin)
 	path.curve.add_point(target.global_transform.origin - target.translation)
 	path.curve.add_point(towingTarget.global_transform.origin - target.global_transform.origin)
@@ -86,6 +87,9 @@ func TurnOffSucc():
 		path.remove_child(child)
 
 func SpawnMovingResource():
+	if towingTarget is Planet:
+		(towingTarget as Planet).grow_planet()
+		
 	if !isSucc:
 		pass
 	
