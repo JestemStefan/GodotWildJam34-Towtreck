@@ -35,18 +35,9 @@ func Process(delta: float):
 			stateMachine.SetState("empty")
 			
 	if Input.is_action_pressed("succ"):
-		var nearestSucc = resources[0]
-		var nearestDistance = VectorUtils.GetDistance(target, nearestSucc)
-
-		for resource in resources:
-			var distance = VectorUtils.GetDistance(target, resource)
-			if distance < nearestDistance:
-				nearestDistance = distance
-				nearestSucc = resource
-
-		if nearestDistance < 25 and !isSucc:
-			TurnOnSucc(nearestSucc)
-		elif nearestDistance >= 25 and isSucc:
+		if target.nearbyResourceCloud != null and !isSucc:
+			TurnOnSucc(target.nearbyResourceCloud)
+		elif target.nearbyResourceCloud == null and isSucc:
 			TurnOffSucc()
 	
 	if Input.is_action_just_released("succ"):
@@ -65,7 +56,6 @@ func Input(event: InputEvent):
 	pass
 	
 func TurnOnSucc(nearestSucc: GameResource):
-	
 	path.curve.add_point(nearestSucc.global_transform.origin - target.global_transform.origin)
 	path.curve.add_point(target.global_transform.origin - target.translation)
 	path.curve.add_point(towingTarget.global_transform.origin - target.global_transform.origin)
