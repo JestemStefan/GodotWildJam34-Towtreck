@@ -15,24 +15,9 @@ func Process(delta: float):
 		planets = get_tree().get_nodes_in_group("celestial_bodies")
 	
 	if Input.is_action_just_pressed("select"):
-		var nearest = planets[0]
-		var nearestDistance = VectorUtils.GetDistance(target, nearest)
-		
-		for planet in planets:
-			var distance = VectorUtils.GetDistance(target, planet)
-			if distance < nearestDistance:
-				nearestDistance = distance
-				nearest = planet
-		
-		if nearest is Planet:
-			if nearestDistance < 25:
-				(nearest as Planet).hook_to_ship()
-				stateMachine.SetState("towing", false, [nearest])
-		
-		elif nearest is Sun:
-			if nearestDistance < 50:
-				(nearest as Sun).hook_to_ship()
-				stateMachine.SetState("towing", false, [nearest])
+		if target.nearbyCelestialBody != null:
+			target.nearbyCelestialBody.hook_to_ship(target)
+			stateMachine.SetState("towing", false, [target.nearbyCelestialBody])
 
 func PhysicsProcess(delta: float):
 	pass

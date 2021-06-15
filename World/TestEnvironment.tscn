@@ -32,10 +32,16 @@ texture = ExtResource( 4 )
 
 [node name="Planet_v1" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.2138, 0, -9.04532 )
+speed = 6.0
+velocityFall = 4.0
+playerDistance = 50.0
 planet_weight = 50.0
 
 [node name="Planet_v2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4019, 0, -130.626 )
+speed = 6.0
+velocityFall = 4.0
+playerDistance = 50.0
 planet_weight = 50.0
 
 [node name="Sun" parent="." instance=ExtResource( 5 )]
