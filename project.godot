@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody",
+"class": "CelestialBody",
+"language": "GDScript",
+"path": "res://Scenes/CelestialBodies/CelestialBody.gd"
+}, {
 "base": "Spatial",
 "class": "GameResource",
 "language": "GDScript",
@@ -19,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Player/MovingResource.gd"
 }, {
-"base": "Spatial",
+"base": "CelestialBody",
 "class": "Planet",
 "language": "GDScript",
 "path": "res://src/CelestialBodies/Planet.gd"
@@ -39,12 +44,13 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://StateMachine/StateMachine.gd"
 }, {
-"base": "Spatial",
+"base": "CelestialBody",
 "class": "Sun",
 "language": "GDScript",
 "path": "res://src/CelestialBodies/Sun.gd"
 } ]
 _global_script_class_icons={
+"CelestialBody": "",
 "GameResource": "",
 "MovingResource": "",
 "Planet": "",

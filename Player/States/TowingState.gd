@@ -53,10 +53,6 @@ func Process(delta: float):
 		TurnOffSucc()
 
 func PhysicsProcess(delta: float):
-	var pivotRadius = Vector3.FORWARD * 5;
-	var transform = Transform(towingTarget.transform.basis, target.translation)
-	towingTarget.transform = transform.rotated(Vector3(0, 1, 0), delta).translated(pivotRadius)
-	
 	if isSucc:
 		path.rotation_degrees = target.rotation_degrees
 		path.curve.set_point_position(0, succTarget.global_transform.origin - target.global_transform.origin)

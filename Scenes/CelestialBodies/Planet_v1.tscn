@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://art/planet/CloudMaterial.tres" type="Material" id=1]
 [ext_resource path="res://art/planet/PlanetMaterial.tres" type="Material" id=2]
 [ext_resource path="res://src/CelestialBodies/Planet.gd" type="Script" id=3]
-
+[ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/CelestialBodies/States/StationaryState.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/CelestialBodies/States/TowingState.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/CelestialBodies/States/Planet_OrbittingState.gd" type="Script" id=7]
 
 [sub_resource type="SphereMesh" id=1]
 radius = 2.0
@@ -14,8 +17,17 @@ material = ExtResource( 1 )
 radius = 2.02
 height = 4.04
 
-[node name="Planet_v1" type="Spatial"]
+[sub_resource type="SphereShape" id=3]
+radius = 10.0
+
+[sub_resource type="CylinderShape" id=4]
+radius = 2.5
+height = 10.0
+
+[node name="Planet_v1" type="KinematicBody"]
 script = ExtResource( 3 )
+speed = 8.0
+playerDistance = 2.0
 
 [node name="PlanetsSurface" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
@@ -24,3 +36,30 @@ material/0 = ExtResource( 2 )
 [node name="Clouds" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
 material/0 = null
+
+[node name="StateMachine" type="Spatial" parent="."]
+script = ExtResource( 4 )
+
+[node name="StationaryState" type="Spatial" parent="StateMachine"]
+script = ExtResource( 5 )
+stateType = "stationary"
+isDefault = true
+
+[node name="OrbittingState" type="Spatial" parent="StateMachine"]
+script = ExtResource( 7 )
+stateType = "orbitting"
+
+[node name="TowingState" type="Spatial" parent="StateMachine"]
+script = ExtResource( 6 )
+stateType = "towing"
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_area_body_exited"]
