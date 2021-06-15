@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/SunSpot.obj-fce9db93445deda769638cc23d63f1ba.mesh"
+
+[deps]
+
+files=[ "res://.import/SunSpot.obj-fce9db93445deda769638cc23d63f1ba.mesh" ]
+
+source_file="res://art/SunSpot/SunSpot.obj"
+dest_files=[ "res://.import/SunSpot.obj-fce9db93445deda769638cc23d63f1ba.mesh", "res://.import/SunSpot.obj-fce9db93445deda769638cc23d63f1ba.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

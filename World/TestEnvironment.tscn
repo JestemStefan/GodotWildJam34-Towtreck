@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/CelestialBodies/Planet_v1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player3d.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://World/space.jpg" type="Texture" id=4]
 [ext_resource path="res://Scenes/CelestialBodies/Sun.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Resources/Resource.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/LevelElements/SunSpotArea.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Environment" id=1]
 ambient_light_color = Color( 1, 1, 1, 1 )
@@ -57,3 +58,6 @@ color = Color( 0.992157, 1, 0, 1 )
 [node name="Resource2" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.7233 )
 color = Color( 0, 0.0627451, 1, 1 )
+
+[node name="SunArea" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85.8116, 0, 33.4064 )

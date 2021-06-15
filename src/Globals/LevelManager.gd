@@ -7,6 +7,8 @@ var occupied_orbits: Array = []
 
 var orbit_spacing: float = 25
 
+var isSunPlacedCorrectly: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -35,7 +37,6 @@ func get_free_orbit(planet) -> Position3D:
 	return create_new_orbit_spot(planet.global_transform.origin)
 
 
-
 func create_new_orbit_spot(planet_pos: Vector3) -> Position3D:
 	
 	# create new position that planets will follow
@@ -57,7 +58,6 @@ func create_new_orbit_spot(planet_pos: Vector3) -> Position3D:
 	return orbit_spot
 
 
-
 func release_orbit(orbital_spot: Position3D):
 	
 	# should I check if orbit is on the list?
@@ -68,3 +68,13 @@ func release_orbit(orbital_spot: Position3D):
 	
 	# delete orbit and orbital spot
 	orbital_spot.get_parent().call_deferred("free")
+
+
+func sun_placed():
+	isSunPlacedCorrectly = true
+	print("Sun in correct spot")
+	# TODO check if all other tasks are done
+
+
+func sun_taken():
+	isSunPlacedCorrectly = false
