@@ -1,5 +1,7 @@
 extends Node
 
+var current_level = null
+
 var current_sun = null
 
 var orbit_instance = preload("res://Scenes/CelestialBodies/Orbit.tscn")

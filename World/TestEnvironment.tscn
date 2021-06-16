@@ -1,21 +1,33 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/CelestialBodies/Planet_v1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player3d.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Camera.gd" type="Script" id=3]
-[ext_resource path="res://World/space.jpg" type="Texture" id=4]
+[ext_resource path="res://art/Background/gwj34_background.jpg" type="Texture" id=4]
 [ext_resource path="res://Scenes/CelestialBodies/Sun.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Resources/Resource.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/LevelElements/SunSpotArea.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/HubWorld/Warpgate.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Levels/TestEnvironment.gd" type="Script" id=9]
 
-[sub_resource type="Environment" id=1]
-ambient_light_color = Color( 1, 1, 1, 1 )
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 4 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 70.0
+ambient_light_color = Color( 0, 0.882353, 1, 1 )
 ambient_light_energy = 0.25
 glow_enabled = true
 glow_intensity = 2.13
 glow_strength = 1.4
 
 [node name="TestEnvironment" type="Spatial"]
+script = ExtResource( 9 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.0506, 0, 0 )
@@ -27,29 +39,20 @@ size = 100.0
 far = 1000.0
 script = ExtResource( 3 )
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 100, 0, 0, 0, -4.37114e-06, -100, 0, 100, -4.37114e-06, 0, -74.4188, 0 )
-texture = ExtResource( 4 )
-
 [node name="Planet_v1" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.2138, 0, -9.04532 )
 speed = 6.0
-velocityFall = 4.0
 playerDistance = 50.0
 planet_weight = 50.0
 
 [node name="Planet_v2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4019, 0, -130.626 )
 speed = 6.0
-velocityFall = 4.0
 playerDistance = 50.0
 planet_weight = 50.0
 
 [node name="Sun" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.058, 0, 0 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
 
 [node name="Resource" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63.3454, 0, -35.5349 )
@@ -61,3 +64,6 @@ color = Color( 0, 0.0627451, 1, 1 )
 
 [node name="SunArea" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85.8116, 0, 33.4064 )
+
+[node name="Warpgate" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5851, 0.598169, -29.0605 )
