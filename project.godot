@@ -48,6 +48,11 @@ _global_script_classes=[ {
 "class": "Sun",
 "language": "GDScript",
 "path": "res://src/CelestialBodies/Sun.gd"
+}, {
+"base": "KinematicBody",
+"class": "TrailerBase",
+"language": "GDScript",
+"path": "res://Scenes/Trailer/TrailerBase.gd"
 } ]
 _global_script_class_icons={
 "CelestialBody": "",
@@ -57,7 +62,8 @@ _global_script_class_icons={
 "Player": "",
 "State": "",
 "StateMachine": "",
-"Sun": ""
+"Sun": "",
+"TrailerBase": ""
 }
 
 [application]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/CelestialBodies/Planet_v1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player3d.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/CelestialBodies/Sun.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Resources/Resource.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/LevelElements/SunSpotArea.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Trailer/GrowingTrailer.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Environment" id=1]
 ambient_light_color = Color( 1, 1, 1, 1 )
@@ -34,14 +35,12 @@ texture = ExtResource( 4 )
 [node name="Planet_v1" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.2138, 0, -9.04532 )
 speed = 6.0
-velocityFall = 4.0
 playerDistance = 50.0
 planet_weight = 50.0
 
 [node name="Planet_v2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4019, 0, -130.626 )
 speed = 6.0
-velocityFall = 4.0
 playerDistance = 50.0
 planet_weight = 50.0
 
@@ -61,3 +60,6 @@ color = Color( 0, 0.0627451, 1, 1 )
 
 [node name="SunArea" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85.8116, 0, 33.4064 )
+
+[node name="GrowingTrailer" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1579, 0, 0 )
