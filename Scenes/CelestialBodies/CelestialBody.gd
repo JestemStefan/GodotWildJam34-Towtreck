@@ -15,9 +15,9 @@ func _on_area_body_exited(body):
 	if body is Player:
 		body.CelestialAreaExited(self)
 
-func hook_to_ship(ship: Player):
+func hook_to_trailer(trailer: TrailerBase):
 	$CollisionShape.disabled = true
-	stateMachine.SetState("towing", false, [ship])
+	stateMachine.SetState("towing", false, [trailer])
 	
-func unhook_from_ship():
+func unhook_from_trailer():
 	$CollisionShape.disabled = false
