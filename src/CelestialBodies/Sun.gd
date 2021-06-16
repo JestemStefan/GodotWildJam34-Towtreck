@@ -6,6 +6,6 @@ func _ready():
 	LevelManager.current_sun = self
 	add_to_group("celestial_bodies", true)
 
-func unhook_from_ship():
-	.unhook_from_ship()
+func unhook_from_trailer():
+	.unhook_from_trailer()
 	stateMachine.SetState("stationary")
