@@ -5,6 +5,7 @@ const MovingResource = preload("res://Player/MovingResource.tscn")
 
 var towingTarget: TrailerBase
 var succTarget: GameResource
+var gathering_particle_system: CPUParticles
 var isSucc = false
 
 onready var path: Path = $Path
@@ -47,6 +48,11 @@ func Input(event: InputEvent):
 	pass
 	
 func TurnOnSucc(nearestSucc: GameResource):
+	
+	gathering_particle_system = nearestSucc.gathering_ps.instance()
+	towingTarget.add_child(gathering_particle_system)
+			
+	
 	path.curve.add_point(nearestSucc.global_transform.origin - target.global_transform.origin)
 	path.curve.add_point(target.global_transform.origin - target.translation)
 	path.curve.add_point(towingTarget.global_transform.origin - target.global_transform.origin)
@@ -55,7 +61,11 @@ func TurnOnSucc(nearestSucc: GameResource):
 	isSucc = true
 	timer.start()
 
+
 func TurnOffSucc():
+	
+	gathering_particle_system.call_deferred("free")
+	
 	timer.stop()
 	isSucc = false
 	succTarget = null

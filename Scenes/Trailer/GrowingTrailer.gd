@@ -9,6 +9,7 @@ func PerformAction():
 	if stateMachine.currentStateType == "towing":
 		if celestialBody is Planet:
 			celestialBody.grow_planet()
+	
 	elif stateMachine.currentStateType == "empty":
 		var planet = planetPack.instance()
 		planet.visible = false
