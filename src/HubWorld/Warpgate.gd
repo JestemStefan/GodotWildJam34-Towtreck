@@ -4,15 +4,16 @@ extends Spatial
 export var gate_rotation_speed: float = 1
 
 var isEnabled: bool = false
+var markerType = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("minimap_targets", true)
 	pass
 
 
 
 func _process(delta):
-	
 		
 	if isEnabled:
 		$Warpgate_Main.rotate_z(gate_rotation_speed * delta * 2)

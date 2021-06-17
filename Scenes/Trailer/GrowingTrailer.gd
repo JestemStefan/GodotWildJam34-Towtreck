@@ -1,6 +1,9 @@
 extends TrailerBase
 
+export var minimapPath: NodePath
+
 onready var planetPack = preload("res://Scenes/CelestialBodies/Planet_v1.tscn")
+onready var minimap: Minimap = get_node(minimapPath)
 
 func PerformAction():
 	if stateMachine.currentStateType == "towing":
@@ -13,3 +16,4 @@ func PerformAction():
 		AttachCelestialBody(planet)
 		planet.visible = true
 		stateMachine.currentState.firstInputIgnored = true
+		minimap.AddMarker(1, planet)

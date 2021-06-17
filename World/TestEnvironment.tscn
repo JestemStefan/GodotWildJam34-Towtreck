@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/CelestialBodies/Planet_v1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player3d.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/HubWorld/Warpgate.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Levels/TestEnvironment.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/Trailer/GrowingTrailer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/Minimap.tscn" type="PackedScene" id=11]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 4 )
@@ -71,3 +72,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5851, 0.598169, -29.0605 )
 
 [node name="GrowingTrailer" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2244, 0, 0 )
+minimapPath = NodePath("../CanvasLayer/Minimap")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Minimap" parent="CanvasLayer" instance=ExtResource( 11 )]
+shipPath = NodePath("../../Player")
