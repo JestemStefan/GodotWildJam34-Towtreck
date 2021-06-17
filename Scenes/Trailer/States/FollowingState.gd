@@ -10,7 +10,7 @@ func OnStateLoad(parameters: Array):
 	firstInputIgnored = parameters[1]
 	
 func OnStateUnload():
-	target.ship = null
+	pass
 	
 func Process(delta: float):
 	if Input.is_action_just_pressed("select"):

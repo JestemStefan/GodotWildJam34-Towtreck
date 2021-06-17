@@ -8,7 +8,6 @@ func OnStateLoad(parameters: Array):
 	celestialBody.hook_to_trailer(target)
 	
 func OnStateUnload():
-	target.celestialBody = null
 	if celestialBody is Planet:
 		celestialBody.unhook_to_orbit()
 	else:
