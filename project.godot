@@ -155,4 +155,3 @@ quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 quality/shadows/filter_mode=0
-environment/default_environment="res://default_env.tres"
