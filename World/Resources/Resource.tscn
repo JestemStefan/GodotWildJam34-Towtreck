@@ -1,47 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://art/Particles/HydrogenParticle.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://World/Resources/Resource.gd" type="Script" id=2]
-[ext_resource path="res://art/Particles/HydrogenParticleMaterial.material" type="Material" id=3]
 
 [sub_resource type="SphereShape" id=1]
-radius = 25.0
-
-[sub_resource type="Curve" id=2]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.201192, 0.446591 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.155682 ), 0.0, 0.0, 0, 0 ]
+radius = 35.0
 
 [node name="Resource" type="Spatial"]
 script = ExtResource( 2 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.756, 0 )
 visible = false
-light_color = Color( 1, 0, 0, 1 )
-omni_range = 30.0
-omni_attenuation = 0.00781254
+light_color = Color( 0, 0.529412, 1, 1 )
+omni_range = 50.0
 
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 1 )
-
-[node name="CPUParticles" type="CPUParticles" parent="."]
-material_override = ExtResource( 3 )
-amount = 128
-mesh = ExtResource( 1 )
-emission_shape = 1
-emission_sphere_radius = 15.0
-flag_rotate_y = true
-direction = Vector3( 0, 0, 0 )
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 30.0
-initial_velocity_random = 1.0
-angular_velocity = 24.76
-angular_velocity_random = 0.22
-linear_accel = -16.54
-radial_accel = -57.43
-angle_random = 1.0
-scale_amount_curve = SubResource( 2 )
 
 [connection signal="body_entered" from="Area" to="." method="areaEntered"]
 [connection signal="body_exited" from="Area" to="." method="areaExited"]

@@ -20,8 +20,8 @@ background_sky_custom_fov = 70.0
 ambient_light_color = Color( 0, 0.882353, 1, 1 )
 ambient_light_energy = 0.25
 glow_enabled = true
-glow_intensity = 2.13
-glow_strength = 1.4
+glow_intensity = 2.0
+glow_strength = 1.5
 
 [node name="TestEnvironment" type="Spatial"]
 script = ExtResource( 9 )
@@ -61,6 +61,11 @@ color = Color( 0.992157, 1, 0, 1 )
 [node name="Resource2" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.7233 )
 color = Color( 0, 0.0627451, 1, 1 )
+CloudType = 2
+
+[node name="Resource3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0126, 0, -75.98 )
+CloudType = 1
 
 [node name="SunArea" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85.8116, 0, 33.4064 )
