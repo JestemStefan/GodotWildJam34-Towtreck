@@ -9,6 +9,10 @@ onready var stateMachine: StateMachine = $StateMachine
 
 var ship: Player
 var celestialBody
+var markerType = 4
+
+func _ready():
+	add_to_group("minimap_targets", true)
 
 func onAreaBodyEntered(body):
 	if body is Player:

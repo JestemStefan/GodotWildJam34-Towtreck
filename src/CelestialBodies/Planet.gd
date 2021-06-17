@@ -4,9 +4,11 @@ class_name Planet
 # Planet stats
 export var planet_weight: float = 1
 
+var markerType = 1
 
 func _ready():
 	add_to_group("celestial_bodies", true)
+	add_to_group("minimap_targets", true)
 	update_size()
 
 
