@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/RockParticle.obj-ec51c6c9cad45acd86f399eb643a0442.mesh"
+
+[deps]
+
+files=[ "res://.import/RockParticle.obj-ec51c6c9cad45acd86f399eb643a0442.mesh" ]
+
+source_file="res://art/Particles/RockParticle.obj"
+dest_files=[ "res://.import/RockParticle.obj-ec51c6c9cad45acd86f399eb643a0442.mesh", "res://.import/RockParticle.obj-ec51c6c9cad45acd86f399eb643a0442.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Warpgate_Main.obj-c12961d7e435eec460612757db49a024.mesh"
+
+[deps]
+
+files=[ "res://.import/Warpgate_Main.obj-c12961d7e435eec460612757db49a024.mesh" ]
+
+source_file="res://art/Warpgate/Warpgate_Main.obj"
+dest_files=[ "res://.import/Warpgate_Main.obj-c12961d7e435eec460612757db49a024.mesh", "res://.import/Warpgate_Main.obj-c12961d7e435eec460612757db49a024.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
