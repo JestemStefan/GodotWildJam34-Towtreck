@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/HydrogenParticle.obj-9f940a2f6895d414ad153315efe204fa.mesh"
+
+[deps]
+
+files=[ "res://.import/HydrogenParticle.obj-9f940a2f6895d414ad153315efe204fa.mesh" ]
+
+source_file="res://art/Particles/HydrogenParticle.obj"
+dest_files=[ "res://.import/HydrogenParticle.obj-9f940a2f6895d414ad153315efe204fa.mesh", "res://.import/HydrogenParticle.obj-9f940a2f6895d414ad153315efe204fa.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
