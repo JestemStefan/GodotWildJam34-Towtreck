@@ -23,6 +23,8 @@ func Process(delta: float):
 		if !towingTarget.IsTowingCelestialBody():
 			if target.nearbyCelestialBody != null:
 				towingTarget.AttachCelestialBody(target.nearbyCelestialBody)
+				towingTarget.slow_spin()
+				
 			else:
 				stateMachine.SetState("empty")
 			
@@ -49,6 +51,8 @@ func Input(event: InputEvent):
 	
 func TurnOnSucc(nearestSucc: GameResource):
 	
+	towingTarget.fast_spin()
+	
 	gathering_particle_system = nearestSucc.gathering_ps.instance()
 	towingTarget.add_child(gathering_particle_system)
 			
@@ -64,8 +68,11 @@ func TurnOnSucc(nearestSucc: GameResource):
 
 func TurnOffSucc():
 	
+	towingTarget.slow_spin()
+	
 	if gathering_particle_system != null:
 		gathering_particle_system.call_deferred("free")
+		gathering_particle_system = null
 	
 	timer.stop()
 	isSucc = false
