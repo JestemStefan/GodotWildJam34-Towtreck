@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/Levels/Environment.gd" type="Script" id=1]
+[ext_resource path="res://Player/Player3d.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/Background/gwj34_background.jpg" type="Texture" id=3]
+[ext_resource path="res://Player/Camera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Minimap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/CelestialBodies/Sun.tscn" type="PackedScene" id=6]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 3 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 70.0
+ambient_light_color = Color( 0, 0.882353, 1, 1 )
+ambient_light_energy = 0.25
+glow_enabled = true
+glow_intensity = 2.0
+glow_strength = 1.5
+
+[node name="LevelBase" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="Sun" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 166.269, 0, -173.706 )
+
+[node name="Camera" parent="." instance=ExtResource( 4 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Minimap" parent="CanvasLayer" instance=ExtResource( 5 )]
+shipPath = NodePath("../../Player")

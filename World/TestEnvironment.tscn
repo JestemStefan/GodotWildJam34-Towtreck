@@ -2,13 +2,13 @@
 
 [ext_resource path="res://Scenes/CelestialBodies/Planet_v1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player3d.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Camera.gd" type="Script" id=3]
+[ext_resource path="res://Player/Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://art/Background/gwj34_background.jpg" type="Texture" id=4]
 [ext_resource path="res://Scenes/CelestialBodies/Sun.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Resources/Resource.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/LevelElements/SunSpotArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/HubWorld/Warpgate.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/Levels/TestEnvironment.gd" type="Script" id=9]
+[ext_resource path="res://src/Levels/Environment.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/Trailer/GrowingTrailer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Minimap.tscn" type="PackedScene" id=11]
 [ext_resource path="res://art/Background/Grid.png" type="Texture" id=12]
@@ -43,7 +43,7 @@ environment = SubResource( 2 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.0506, 0, 0 )
 
-[node name="Camera" type="Camera" parent="."]
+[node name="Camera" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 0.765438, 0.643509, 0, -0.643509, 0.765438, 0, 50, 59.4524 )
 size = 100.0
 far = 1000.0
@@ -66,16 +66,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.058, 0, 0 )
 
 [node name="Resource" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63.3454, 0, -35.5349 )
-color = Color( 0.992157, 1, 0, 1 )
 
 [node name="Resource2" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.7233 )
-color = Color( 0, 0.0627451, 1, 1 )
 CloudType = 2
 
 [node name="Resource3" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0126, 0, -75.98 )
-CloudType = 1
 
 [node name="SunArea" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85.8116, 0, 33.4064 )
@@ -85,7 +82,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5851, 0.598169, -29.0605 )
 
 [node name="GrowingTrailer" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2244, 0, 0 )
-minimapPath = NodePath("../CanvasLayer/Minimap")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
