@@ -64,7 +64,8 @@ func TurnOnSucc(nearestSucc: GameResource):
 
 func TurnOffSucc():
 	
-	gathering_particle_system.call_deferred("free")
+	if gathering_particle_system != null:
+		gathering_particle_system.call_deferred("free")
 	
 	timer.stop()
 	isSucc = false

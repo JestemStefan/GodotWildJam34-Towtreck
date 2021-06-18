@@ -1,7 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Trailer/TrailerBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Trailer/GrowingTrailer.gd" type="Script" id=2]
+[ext_resource path="res://art/Trailers/Pull_Trailer/Pull_Trailer.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://art/Trailers/Pull_Trailer/Pull_Trailer_Material.material" type="Material" id=4]
 
 [node name="GrowingTrailer" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="TrailerMesh/Part1" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 4 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="TrailerMesh/Part2" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 4 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="TrailerMesh/Part3" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 4 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="TrailerMesh/Part4" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 4 )
