@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/TruckShip_Engine.obj-25c18a48da94d26244347b7b99c8b7f0.mesh"
+
+[deps]
+
+files=[ "res://.import/TruckShip_Engine.obj-25c18a48da94d26244347b7b99c8b7f0.mesh" ]
+
+source_file="res://art/TruckShip/TruckShip_Engine.obj"
+dest_files=[ "res://.import/TruckShip_Engine.obj-25c18a48da94d26244347b7b99c8b7f0.mesh", "res://.import/TruckShip_Engine.obj-25c18a48da94d26244347b7b99c8b7f0.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

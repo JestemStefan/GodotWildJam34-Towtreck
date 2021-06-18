@@ -38,6 +38,9 @@ func Process(delta: float):
 		TurnOffSucc()
 
 func PhysicsProcess(delta: float):
+	
+	
+	
 	if isSucc:
 		path.rotation_degrees = target.rotation_degrees
 		path.curve.set_point_position(0, succTarget.global_transform.origin - target.global_transform.origin)
