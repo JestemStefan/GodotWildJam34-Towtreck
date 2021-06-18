@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/CelestialBodies/Planet_v1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player3d.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://src/Levels/TestEnvironment.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/Trailer/GrowingTrailer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Minimap.tscn" type="PackedScene" id=11]
+[ext_resource path="res://art/Background/Grid.png" type="Texture" id=12]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 4 )
@@ -19,11 +20,19 @@ panorama = ExtResource( 4 )
 background_mode = 2
 background_sky = SubResource( 1 )
 background_sky_custom_fov = 70.0
-ambient_light_color = Color( 0, 0.882353, 1, 1 )
-ambient_light_energy = 0.25
+background_energy = 0.5
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 2.0
+ambient_light_sky_contribution = 0.7
 glow_enabled = true
-glow_intensity = 2.0
-glow_strength = 1.5
+glow_intensity = 2.24
+glow_strength = 1.43
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+flags_unshaded = true
+albedo_color = Color( 1, 1, 1, 0.290196 )
+albedo_texture = ExtResource( 12 )
 
 [node name="TestEnvironment" type="Spatial"]
 script = ExtResource( 9 )
@@ -35,8 +44,7 @@ environment = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.0506, 0, 0 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 0 )
-projection = 1
+transform = Transform( 1, 0, 0, 0, 0.765438, 0.643509, 0, -0.643509, 0.765438, 0, 50, 59.4524 )
 size = 100.0
 far = 1000.0
 script = ExtResource( 3 )
@@ -83,3 +91,77 @@ minimapPath = NodePath("../CanvasLayer/Minimap")
 
 [node name="Minimap" parent="CanvasLayer" instance=ExtResource( 11 )]
 shipPath = NodePath("../../Player")
+
+[node name="Grid" type="Spatial" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Grid"]
+transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 0 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+double_sided = false
+alpha_cut = 1
+texture = ExtResource( 12 )
+
+[node name="Sprite3D3" type="Sprite3D" parent="Grid"]
+transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, -409 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+double_sided = false
+alpha_cut = 1
+texture = ExtResource( 12 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="Grid"]
+transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 409 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+double_sided = false
+alpha_cut = 1
+texture = ExtResource( 12 )
+
+[node name="Sprite3D4" type="Sprite3D" parent="Grid"]
+transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 409, 0, 0 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+double_sided = false
+alpha_cut = 1
+texture = ExtResource( 12 )
+
+[node name="Sprite3D5" type="Sprite3D" parent="Grid"]
+transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 409, 0, -409 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+double_sided = false
+alpha_cut = 1
+texture = ExtResource( 12 )
+
+[node name="Sprite3D6" type="Sprite3D" parent="Grid"]
+transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 409, 0, 409 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+double_sided = false
+alpha_cut = 1
+texture = ExtResource( 12 )
+
+[node name="Sprite3D7" type="Sprite3D" parent="Grid"]
+transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, -409, 0, 0 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+double_sided = false
+alpha_cut = 1
+texture = ExtResource( 12 )
+
+[node name="Sprite3D8" type="Sprite3D" parent="Grid"]
+transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, -409, 0, -409 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+double_sided = false
+alpha_cut = 1
+texture = ExtResource( 12 )
+
+[node name="Sprite3D9" type="Sprite3D" parent="Grid"]
+transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, -409, 0, 409 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+double_sided = false
+alpha_cut = 1
+texture = ExtResource( 12 )

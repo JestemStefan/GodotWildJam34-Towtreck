@@ -23,6 +23,8 @@ func Process(delta: float):
 		if !towingTarget.IsTowingCelestialBody():
 			if target.nearbyCelestialBody != null:
 				towingTarget.AttachCelestialBody(target.nearbyCelestialBody)
+				towingTarget.slow_spin()
+				
 			else:
 				stateMachine.SetState("empty")
 			
@@ -36,6 +38,9 @@ func Process(delta: float):
 		TurnOffSucc()
 
 func PhysicsProcess(delta: float):
+	
+	
+	
 	if isSucc:
 		path.rotation_degrees = target.rotation_degrees
 		path.curve.set_point_position(0, succTarget.global_transform.origin - target.global_transform.origin)
@@ -48,6 +53,8 @@ func Input(event: InputEvent):
 	pass
 	
 func TurnOnSucc(nearestSucc: GameResource):
+	
+	towingTarget.fast_spin()
 	
 	gathering_particle_system = nearestSucc.gathering_ps.instance()
 	towingTarget.add_child(gathering_particle_system)
@@ -64,7 +71,11 @@ func TurnOnSucc(nearestSucc: GameResource):
 
 func TurnOffSucc():
 	
-	gathering_particle_system.call_deferred("free")
+	towingTarget.slow_spin()
+	
+	if gathering_particle_system != null:
+		gathering_particle_system.call_deferred("free")
+		gathering_particle_system = null
 	
 	timer.stop()
 	isSucc = false

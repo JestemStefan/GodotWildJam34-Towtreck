@@ -13,6 +13,8 @@ func Process(delta: float):
 		if target.nearbyTrailer != null:
 			target.nearbyTrailer.AttachToShip(target)
 			stateMachine.SetState("towing", false, [target.nearbyTrailer])
+			
+			target.nearbyTrailer.slow_spin()
 
 func PhysicsProcess(delta: float):
 	pass
