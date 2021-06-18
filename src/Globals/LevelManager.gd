@@ -1,24 +1,63 @@
 extends Node
 
-var current_level = null
+var current_level: Node = null
 
 var current_sun = null
 
 var orbit_instance = preload("res://Scenes/CelestialBodies/Orbit.tscn")
 var occupied_orbits: Array = []
 
+var levelBasePack = preload("res://src/Levels/LevelBase.tscn")
+var sunSpotPack = preload("res://Scenes/LevelElements/SunSpotArea.tscn")
+var growingTrailerPack = preload("res://Scenes/Trailer/GrowingTrailer.tscn")
+var resourceCloudPack = preload("res://World/Resources/Resource.tscn")
+
 var orbit_spacing: float = 25
 
 var isSunPlacedCorrectly: bool = false
 
-var task_orbit_1: float = 50
-var task_orbit_2: float = 100
-var orbit_tasks: Array = [task_orbit_1, task_orbit_2]
+var orbit_tasks: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
+	
+# planets fields - orbit: float, rockPercent: int, hydrogenPercent: int, icePercent: int, minimumMass: int
+# resource clouds - arrays of positions
+func SetupLevel(sunPosition: Vector2, planets: Array, hydrogenClouds: Array, rockClouds: Array, iceClouds: Array):
+	current_level = null
+	get_tree().change_scene("res://src/Levels/LevelBase.tscn")
+	while current_level == null:
+		yield(get_tree().create_timer(0.1), "timeout")
+	
+	var sunSpot = sunSpotPack.instance()
+	sunSpot.translation = Vector3(sunPosition.x, 0, sunPosition.y)
+	current_level.add_child(sunSpot)
+	
+	var trailer = growingTrailerPack.instance()
+	trailer.translation = Vector3(10, 0, 10)
+	current_level.add_child(trailer)
+	
+	for cloudPosition in hydrogenClouds:
+		var cloud = resourceCloudPack.instance()
+		cloud.translation = Vector3(cloudPosition.x, 0, cloudPosition.y)
+		cloud.CloudType = 1
+		current_level.add_child(cloud)
+		
+	for cloudPosition in rockClouds:
+		var cloud = resourceCloudPack.instance()
+		cloud.translation = Vector3(cloudPosition.x, 0, cloudPosition.y)
+		cloud.CloudType = 2
+		current_level.add_child(cloud)
+	
+	for cloudPosition in iceClouds:
+		var cloud = resourceCloudPack.instance()
+		cloud.translation = Vector3(cloudPosition.x, 0, cloudPosition.y)
+		cloud.CloudType = 3
+		current_level.add_child(cloud)
+	
+	for planetTemplate in planets:
+		orbit_tasks.append(planetTemplate.orbit)
 
 # check if this orbit is free and return planet orbital spot or null
 func get_free_orbit(planet) -> Position3D:

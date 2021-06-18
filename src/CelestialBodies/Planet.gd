@@ -17,7 +17,8 @@ func _process(delta):
 	$Clouds.rotate_y(0.2 * delta)
 	
 	$PlanetStats.rect_position = get_viewport().get_camera().unproject_position(global_transform.origin)
-	$PlanetStats.text = str(global_transform.origin.distance_to(LevelManager.current_sun.global_transform.origin))
+	if LevelManager.current_sun != null:
+		$PlanetStats.text = str(global_transform.origin.distance_to(LevelManager.current_sun.global_transform.origin))
 
 
 func grow_planet():

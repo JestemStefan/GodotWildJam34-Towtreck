@@ -38,13 +38,11 @@ func Process(delta: float):
 		TurnOffSucc()
 
 func PhysicsProcess(delta: float):
-	
-	
-	
-	if isSucc:
-		path.rotation_degrees = target.rotation_degrees
-		path.curve.set_point_position(0, succTarget.global_transform.origin - target.global_transform.origin)
-		path.curve.set_point_position(2, towingTarget.global_transform.origin - target.global_transform.origin)
+#	if isSucc:
+#		path.rotation_degrees = target.rotation_degrees
+#		path.curve.set_point_position(0, succTarget.global_transform.origin - target.global_transform.origin)
+#		path.curve.set_point_position(2, towingTarget.global_transform.origin - target.global_transform.origin)
+	pass
 	
 func Draw():
 	pass
@@ -60,10 +58,10 @@ func TurnOnSucc(nearestSucc: GameResource):
 	towingTarget.add_child(gathering_particle_system)
 			
 	
-	path.curve.add_point(nearestSucc.global_transform.origin - target.global_transform.origin)
-	path.curve.add_point(target.global_transform.origin - target.translation)
-	path.curve.add_point(towingTarget.global_transform.origin - target.global_transform.origin)
-	
+#	path.curve.add_point(nearestSucc.global_transform.origin - target.global_transform.origin)
+#	path.curve.add_point(target.global_transform.origin - target.translation)
+#	path.curve.add_point(towingTarget.global_transform.origin - target.global_transform.origin)
+#
 	succTarget = nearestSucc
 	isSucc = true
 	timer.start()
@@ -73,23 +71,23 @@ func TurnOffSucc():
 	
 	towingTarget.slow_spin()
 	
-	if gathering_particle_system != null:
-		gathering_particle_system.call_deferred("free")
+	if is_instance_valid(gathering_particle_system):
+		gathering_particle_system.queue_free()
 		gathering_particle_system = null
 	
 	timer.stop()
 	isSucc = false
 	succTarget = null
-	path.curve.clear_points()
-	for child in path.get_children():
-		path.remove_child(child)
+#	path.curve.clear_points()
+#	for child in path.get_children():
+#		path.remove_child(child)
 
 func SpawnMovingResource():
 	if !isSucc:
 		pass
-		
+
 	towingTarget.PerformAction()
-	
-	var res: MovingResource = MovingResource.instance()
-	res.color = succTarget.color
-	path.add_child(res)
+#
+#	var res: MovingResource = MovingResource.instance()
+#	res.color = succTarget.color
+#	path.add_child(res)
