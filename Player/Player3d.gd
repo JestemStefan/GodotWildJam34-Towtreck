@@ -5,6 +5,8 @@ export var speed = 4.0
 export var turnSpeed = 3.0
 export var velocityFall = 2.0
 
+onready var stateMachine: StateMachine = $StateMachine
+
 var velocity = Vector3.ZERO
 var turn = 0
 var nearbyCelestialBody
@@ -12,8 +14,6 @@ var nearbyResourceCloud
 var nearbyTrailer
 
 func _physics_process(delta: float):
-	
-	
 	var turnChange = (Input.get_action_strength("turn_left") - Input.get_action_strength("turn_right")) * delta * turnSpeed
 	turn += turnChange
 	rotation.y = turn
