@@ -4,6 +4,11 @@ class_name Planet
 # Planet stats
 export var planet_weight: float = 1
 
+var materialWeight: int = 0
+var iceWeight: int = 0
+var rocksWeight: int = 0
+var hydrogenWeight: int = 0
+
 var markerType = 1
 
 func _ready():
@@ -21,14 +26,42 @@ func _process(delta):
 		$PlanetStats.text = str(global_transform.origin.distance_to(LevelManager.current_sun.global_transform.origin))
 
 
-func grow_planet():
+func grow_planet(resourceCloud: GameResource):
 	planet_weight += 0.5 + (planet_weight * 0.01)
 	update_size()
+	
+	materialWeight += 1
+	match resourceCloud.CloudType:
+		1:
+			hydrogenWeight += 1
+		2:
+			rocksWeight += 1
+		3:
+			iceWeight += 1
+	
+	print(materialWeight, " ", hydrogenWeight, " ", rocksWeight, " ", iceWeight)
 
 
-func shrink_planet():
+func shrink_planet(resourceCloud: GameResource):
+	match resourceCloud.CloudType:
+		1:
+			if hydrogenWeight < 1:
+				return
+			hydrogenWeight -= 1
+		2:
+			if rocksWeight < 1:
+				return
+			rocksWeight -= 1
+		3:
+			if iceWeight < 1:
+				return
+			iceWeight -= 1
+	
+	materialWeight -= 1
 	planet_weight -= 0.5 + (planet_weight * 0.01)
 	update_size()
+	
+	print(materialWeight, " ", hydrogenWeight, " ", rocksWeight, " ", iceWeight)
 
 
 func update_size():

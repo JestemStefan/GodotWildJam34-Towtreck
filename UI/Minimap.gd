@@ -54,3 +54,9 @@ func AddMarker(node):
 	container.add_child(sprite)
 	sprite.show()
 	visibleMarkers[node] = sprite
+	
+func RemoveMarker(node):
+	var sprite: Sprite = visibleMarkers[node]
+	visibleMarkers.erase(node)
+	sprite.queue_free()
+	

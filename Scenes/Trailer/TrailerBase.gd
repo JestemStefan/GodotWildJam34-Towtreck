@@ -39,9 +39,11 @@ func AttachCelestialBody(body):
 func IsTowingCelestialBody():
 	return stateMachine.currentStateType == "towing"
 
-func PerformAction():
+func PerformAction(data):
 	pass
 
+func PerformSecondaryAction(data):
+	pass
 
 func slow_spin():
 	isSpinning = true
