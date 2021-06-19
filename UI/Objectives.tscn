@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Objectives.gd" type="Script" id=1]
+[ext_resource path="res://UI/UILabelFontHeader.tres" type="DynamicFont" id=2]
+
+[node name="Objectives" type="MarginContainer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -250.0
+margin_right = 310.0
+grow_vertical = 0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 305.0
+margin_bottom = 245.0
+color = Color( 0.509804, 1, 1, 0.117647 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 305.0
+margin_bottom = 245.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 295.0
+margin_bottom = 235.0
+
+[node name="Label" type="Label" parent="MarginContainer/MainContainer"]
+margin_right = 290.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 2 )
+text = "MISSION OBJECTIVES"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MainContainer"]
+margin_top = 46.0
+margin_right = 290.0
+margin_bottom = 50.0

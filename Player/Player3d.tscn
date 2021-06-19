@@ -35,7 +35,7 @@ normal_texture = ExtResource( 7 )
 [sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 11 )
 
-[sub_resource type="SphereMesh" id=4]
+[sub_resource type="SphereMesh" id=8]
 radius = 0.5
 height = 1.0
 radial_segments = 8
@@ -88,7 +88,7 @@ lifetime = 0.5
 explosiveness = 0.2
 randomness = 0.02
 local_coords = false
-mesh = SubResource( 4 )
+mesh = SubResource( 8 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -111,7 +111,7 @@ amount = 128
 lifetime = 0.5
 explosiveness = 0.1
 local_coords = false
-mesh = SubResource( 4 )
+mesh = SubResource( 8 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -137,7 +137,7 @@ amount = 128
 lifetime = 0.5
 explosiveness = 0.1
 local_coords = false
-mesh = SubResource( 4 )
+mesh = SubResource( 8 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -163,7 +163,7 @@ amount = 128
 lifetime = 0.5
 explosiveness = 0.1
 local_coords = false
-mesh = SubResource( 4 )
+mesh = SubResource( 8 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )

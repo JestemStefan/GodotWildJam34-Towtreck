@@ -7,6 +7,8 @@
 [ext_resource path="res://UI/Minimap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/CelestialBodies/Sun.tscn" type="PackedScene" id=6]
 [ext_resource path="res://art/Background/Grid.png" type="Texture" id=7]
+[ext_resource path="res://UI/Objectives.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/CurrentPlanetInfo.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 3 )
@@ -121,3 +123,7 @@ cast_shadow = 0
 double_sided = false
 alpha_cut = 1
 texture = ExtResource( 7 )
+[node name="Objectives" parent="CanvasLayer" instance=ExtResource( 7 )]
+
+[node name="CurrentPlanetInfo" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false

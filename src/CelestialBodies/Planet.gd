@@ -9,7 +9,26 @@ var iceWeight: int = 0
 var rocksWeight: int = 0
 var hydrogenWeight: int = 0
 
+var icePercent: int setget, getIcePercent
+var rocksPercent: int setget, getRocksPercent
+var hydrogenPercent: int setget, getHydrogenPercent
+
 var markerType = 1
+
+func getIcePercent():
+	if materialWeight < 1:
+		return 0
+	return iceWeight * 100 / materialWeight
+	
+func getRocksPercent():
+	if materialWeight < 1:
+		return 0
+	return rocksWeight * 100 / materialWeight
+	
+func getHydrogenPercent():
+	if materialWeight < 1:
+		return 0
+	return hydrogenWeight * 100 / materialWeight
 
 func _ready():
 	add_to_group("celestial_bodies", true)

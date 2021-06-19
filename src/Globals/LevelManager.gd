@@ -1,11 +1,11 @@
 extends Node
 
 var current_level: Node = null
-
 var current_sun = null
+var objectivesUI = null
 
 var orbit_instance = preload("res://Scenes/CelestialBodies/Orbit.tscn")
-var occupied_orbits: Array = []
+var occupied_orbits: Dictionary = {}
 
 var levelBasePack = preload("res://src/Levels/LevelBase.tscn")
 var sunSpotPack = preload("res://Scenes/LevelElements/SunSpotArea.tscn")
@@ -18,11 +18,21 @@ var isSunPlacedCorrectly: bool = false
 
 var orbit_tasks: Array = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _process(delta):
+	if is_instance_valid(objectivesUI) and objectivesUI.AllDone():
+		print("All done!")
+		
+	for planet in occupied_orbits:
+		var orbit = occupied_orbits[planet]
+		for template in orbit_tasks:
+			if abs(template.orbit - orbit) < 10 and abs(planet.icePercent - template.icePercent) < 5 and abs(planet.rocksPercent - template.rocksPercent) < 5 and abs(planet.hydrogenPercent - template.hydrogenPercent) < 5:
+				objectivesUI.SetObjective("planet_" + String(template.orbit), true)
 	
-# planets fields - orbit: float, rockPercent: int, hydrogenPercent: int, icePercent: int, minimumMass: int
+	for template in orbit_tasks:
+		if !occupied_orbits.values().has(template.orbit):
+			objectivesUI.SetObjective("planet_" + String(template.orbit), false)
+	
+# planets fields - orbit: float, rocksPercent: int, hydrogenPercent: int, icePercent: int, minimumMass: int
 # resource clouds - arrays of positions
 func SetupLevel(sunPosition: Vector2, planets: Array, hydrogenClouds: Array, rockClouds: Array, iceClouds: Array):
 	current_level = null
@@ -33,6 +43,7 @@ func SetupLevel(sunPosition: Vector2, planets: Array, hydrogenClouds: Array, roc
 	var sunSpot = sunSpotPack.instance()
 	sunSpot.translation = Vector3(sunPosition.x, 0, sunPosition.y)
 	current_level.add_child(sunSpot)
+	objectivesUI.AddObjective("sun", "Set the star in the correct spot")
 	
 	var trailer = growingTrailerPack.instance()
 	trailer.translation = Vector3(10, 0, 10)
@@ -57,7 +68,9 @@ func SetupLevel(sunPosition: Vector2, planets: Array, hydrogenClouds: Array, roc
 		current_level.add_child(cloud)
 	
 	for planetTemplate in planets:
-		orbit_tasks.append(planetTemplate.orbit)
+		orbit_tasks.append(planetTemplate)
+		objectivesUI.AddObjective("planet_" + String(planetTemplate.orbit), "Planet in orbit " + String(planetTemplate.orbit) + " (rocks: " + String(planetTemplate.rocksPercent) + "%, hydrogen: " + String(planetTemplate.hydrogenPercent) + "%, ice: " + String(planetTemplate.icePercent) + "%)")
+		
 
 # check if this orbit is free and return planet orbital spot or null
 func get_free_orbit(planet) -> Position3D:
@@ -66,7 +79,7 @@ func get_free_orbit(planet) -> Position3D:
 	var requested_orbit_r: float = round(current_sun.global_transform.origin.distance_to(planet.global_transform.origin))
 	
 	# check if this orbit is already occupied
-	for orbit_r in occupied_orbits:
+	for orbit_r in occupied_orbits.values():
 		
 		# if distance too other orbit is too small then orbit is occupied
 		if abs(orbit_r - requested_orbit_r) < orbit_spacing:
@@ -75,11 +88,7 @@ func get_free_orbit(planet) -> Position3D:
 	
 	# if not then it's free.
 	# add to list of occupied orbits and return true
-	occupied_orbits.append(requested_orbit_r)
-	print(occupied_orbits)
-	
-	# check if all tasks are done
-	isLevelCompleted()
+	occupied_orbits[planet] = requested_orbit_r
 	
 	# create new orbital spot and return
 	return create_new_orbit_spot(planet.global_transform.origin)
@@ -108,14 +117,15 @@ func create_new_orbit_spot(planet_pos: Vector3) -> Position3D:
 
 func release_orbit(orbital_spot: Position3D):
 	
-	# should I check if orbit is on the list?
-	
 	# delete orbit from the list so it will became available
 	var orbit_r: float = round(current_sun.global_transform.origin.distance_to(orbital_spot.global_transform.origin))
 	
 	print_debug("orbit to release: " + str(orbit_r))
-	print_debug(occupied_orbits)
-	occupied_orbits.erase(orbit_r)
+	print_debug(occupied_orbits.values())
+	for key in occupied_orbits:
+		if occupied_orbits[key] == orbit_r:
+			occupied_orbits.erase(key)
+			break
 	
 	# delete orbit and orbital spot
 	orbital_spot.get_parent().call_deferred("free")
@@ -123,25 +133,10 @@ func release_orbit(orbital_spot: Position3D):
 
 func sun_placed():
 	isSunPlacedCorrectly = true
-	print("Sun in correct spot")
-	# TODO check if all other tasks are done
+	objectivesUI.SetObjective("sun", true)
 
 
 func sun_taken():
 	isSunPlacedCorrectly = false
-
-
-func isLevelCompleted():
-	var expected_orbits: Array = orbit_tasks.duplicate(true)
+	objectivesUI.SetObjective("sun", false)
 	
-	for orbit in occupied_orbits:
-		for exptected_orbit in expected_orbits:
-			if abs(exptected_orbit - orbit) < 10:
-				expected_orbits.erase(exptected_orbit)
-	
-	if expected_orbits.empty():
-		print("All tasks done")
-	
-	else:
-		print("Current orbits: " + str(occupied_orbits) + ", Expected: " + str(orbit_tasks))
-		print("Missed: " + str(expected_orbits))
