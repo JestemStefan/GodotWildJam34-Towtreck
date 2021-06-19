@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GWJ34_WarpPassiveLoop.ogg-dc0540dd809022caad2cb0909d214668.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/GWJ34_WarpPassiveLoop.ogg"
+dest_files=[ "res://.import/GWJ34_WarpPassiveLoop.ogg-dc0540dd809022caad2cb0909d214668.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
