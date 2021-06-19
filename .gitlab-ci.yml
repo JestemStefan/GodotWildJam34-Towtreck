@@ -55,7 +55,7 @@ macosx:
   artifacts:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
-      - build/macosx/
+      - build/macos/
 
 pages:
   stage: deploy
