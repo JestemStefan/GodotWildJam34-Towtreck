@@ -14,6 +14,9 @@ var ship: Player
 var celestialBody
 var markerType = 4
 
+# Sounds
+onready var sfx_attach: AudioStreamSample = preload("res://Audio/SFX/GWJ34_HookupTrailer.wav")
+
 func _ready():
 	add_to_group("minimap_targets", true)
 
@@ -29,6 +32,7 @@ func AttachToShip(ship: Player):
 	if stateMachine.currentStateType == "stationary":
 		self.ship = ship
 		stateMachine.SetState("empty", false, [ship, false])
+		AudioManager.play_sfx(sfx_attach)
 
 
 func AttachCelestialBody(body):

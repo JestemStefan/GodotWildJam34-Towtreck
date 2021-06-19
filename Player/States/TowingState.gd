@@ -12,6 +12,10 @@ onready var path: Path = $Path
 onready var timer: Timer = $Timer
 onready var secondaryTimer: Timer = $SecondaryTimer
 
+#Sounds
+onready var sfx_cloud_succ: AudioStreamSample = preload("res://Audio/SFX/GWJ34_CloudSuckingLoop.wav")
+onready var sfx_detach: AudioStreamSample = preload("res://Audio/SFX/GWJ34_DetachTrailer.wav")
+
 func OnStateLoad(parameters: Array):
 	towingTarget = parameters[0]
 	
@@ -28,6 +32,7 @@ func Process(delta: float):
 				
 			else:
 				stateMachine.SetState("empty")
+				AudioManager.play_sfx(sfx_detach)
 			
 	if Input.is_action_pressed("succ") or Input.is_action_pressed("special"):
 		if target.nearbyResourceCloud != null and !isSucc:
@@ -53,6 +58,8 @@ func TurnOnSucc(nearestSucc: GameResource, isSpecial: bool):
 	gathering_particle_system = nearestSucc.gathering_ps.instance()
 	towingTarget.add_child(gathering_particle_system)
 	
+	AudioManager.play_sfx(sfx_cloud_succ, true)
+	
 	succTarget = nearestSucc
 	isSucc = true
 	if !isSpecial:
@@ -67,6 +74,8 @@ func TurnOffSucc(isSpecial: bool):
 	if is_instance_valid(gathering_particle_system):
 		gathering_particle_system.queue_free()
 		gathering_particle_system = null
+	
+	AudioManager.stop_sfx(sfx_cloud_succ)
 	
 	if !isSpecial:
 		timer.stop()

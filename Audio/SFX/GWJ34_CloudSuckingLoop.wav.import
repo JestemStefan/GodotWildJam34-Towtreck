@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GWJ34_CloudSuckingLoop.wav-3003502e9caedf747c404a4a40c4ac53.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/GWJ34_CloudSuckingLoop.wav"
+dest_files=[ "res://.import/GWJ34_CloudSuckingLoop.wav-3003502e9caedf747c404a4a40c4ac53.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

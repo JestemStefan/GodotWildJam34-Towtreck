@@ -81,6 +81,7 @@ config/icon="res://icon.png"
 [autoload]
 
 LevelManager="*res://src/Globals/LevelManager.gd"
+AudioManager="*res://src/Globals/AudioManager.gd"
 
 [display]
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SpaceMusic_Layer4.ogg-f070fd8c94cddd2a14693c1d6709425e.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/SpaceMusic_Layer4.ogg"
+dest_files=[ "res://.import/SpaceMusic_Layer4.ogg-f070fd8c94cddd2a14693c1d6709425e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
