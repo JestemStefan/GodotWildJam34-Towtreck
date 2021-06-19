@@ -16,6 +16,3 @@ func remove_child(child: Node):
 	if child.is_in_group("minimap_targets"):
 		minimap.RemoveMarker(child)
 
-func rotate_background(rot: Vector3):
-	$WorldEnvironment.environment.background_sky_rotation_degrees += Vector3(rot.z, rot.y, -rot.x) * 0.01
-
