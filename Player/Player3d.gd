@@ -20,8 +20,6 @@ func _physics_process(delta: float):
 	
 	var direction = Vector3(0, 0, Input.get_action_strength("thrust_backwards") - Input.get_action_strength("thrust_forwards")).rotated(Vector3.UP, turn) * speed
 	
-	LevelManager.current_level.rotate_background(direction)
-	
 	velocity += direction
 	velocity = move_and_slide(velocity);
 	velocity -= velocity * delta * velocityFall
