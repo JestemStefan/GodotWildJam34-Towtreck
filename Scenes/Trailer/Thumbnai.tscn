@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scenes/CelestialBodies/Planet_v1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/Background/gwj34_background.jpg" type="Texture" id=2]
+[ext_resource path="res://Scenes/CelestialBodies/Sun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player3d.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Trailer/Thumbnai.gd" type="Script" id=5]
+[ext_resource path="res://UI/DiscoDuckHalftoneItalic-VZJZ.otf" type="DynamicFontData" id=6]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 2 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 70.0
+ambient_light_color = Color( 0, 0.882353, 1, 1 )
+ambient_light_energy = 0.25
+glow_enabled = true
+glow_intensity = 2.0
+glow_strength = 1.5
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform vec4 color1 : hint_color = vec4(1, 0, 0, 1);
+uniform vec4 color2 : hint_color = vec4(0, 0, 1, 1);
+
+void fragment() {
+    vec4 current_color = texture(TEXTURE, UV);
+
+    float ratio = SCREEN_UV.x;
+    float iratio = 1.0 - SCREEN_UV.x;
+
+    float new_r = color2.r * ratio + color1.r * iratio;
+    float new_g = color2.g * ratio + color1.g * iratio;
+    float new_b = color2.b * ratio + color1.b * iratio;
+
+    COLOR = vec4(new_r, new_g, new_b, current_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/color1 = Color( 0.588235, 0, 0.537255, 1 )
+shader_param/color2 = Color( 1, 0.658824, 0.176471, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 128
+font_data = ExtResource( 6 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+[node name="Sun" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.4311, 0, 36.1311 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( -0.883782, 0, 0.467899, 0, 1, 0, -0.467899, 0, -0.883782, 8.83148, 1.53163, -25.771 )
+spot_range = 50.8898
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.786476, -0.268711, 0.556103, -0.153858, 0.957249, 0.244952, -0.59815, 0.107088, -0.794197, 6.12087, 4.46117, -7.88545 )
+
+[node name="Planet_v1" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34147, 0, 91.1102 )
+planet_weight = 100.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1280, 140 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+margin_top = 333.0
+margin_right = 1920.0
+margin_bottom = 747.0
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 1920.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 0, 250 )
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_top = 254.0
+margin_right = 1920.0
+margin_bottom = 414.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer"]
+margin_right = 1920.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 1920, 160 )
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer"]
+material = SubResource( 4 )
+margin_left = 627.0
+margin_top = 17.0
+margin_right = 1293.0
+margin_bottom = 143.0
+custom_fonts/font = SubResource( 5 )
+text = "tow trek"
+__meta__ = {
+"_edit_use_anchors_": false
+}

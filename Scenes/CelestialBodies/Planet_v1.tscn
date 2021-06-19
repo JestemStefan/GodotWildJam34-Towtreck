@@ -62,6 +62,7 @@ shape = SubResource( 3 )
 shape = SubResource( 4 )
 
 [node name="PlanetStats" type="Label" parent="."]
+visible = false
 margin_top = -72.0
 margin_right = 151.0
 margin_bottom = -1.0

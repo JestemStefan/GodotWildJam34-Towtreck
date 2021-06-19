@@ -15,10 +15,10 @@ __meta__ = {
 }
 
 [node name="HotkeysContainer" type="VBoxContainer" parent="."]
-margin_left = 842.0
-margin_top = 334.0
-margin_right = 1078.0
-margin_bottom = 746.0
+margin_left = 522.0
+margin_top = 154.0
+margin_right = 758.0
+margin_bottom = 566.0
 custom_constants/separation = 80
 
 [node name="VolumeContainer" type="VBoxContainer" parent="HotkeysContainer"]
