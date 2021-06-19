@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menu/Credits/Credits.gd" type="Script" id=1]
+[ext_resource path="res://UI/Rajdhani-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/UILabelFontNormal.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/UILabelFontHeader.tres" type="DynamicFont" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 2 )
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
@@ -20,72 +27,133 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 869.0
-margin_top = 435.0
-margin_right = 1051.0
-margin_bottom = 644.0
+margin_left = 642.0
+margin_top = 239.0
+margin_right = 1277.0
+margin_bottom = 841.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 182.0
-margin_bottom = 31.0
+margin_right = 635.0
+margin_bottom = 169.0
+custom_fonts/font = SubResource( 1 )
 text = "THANK YOU FOR PLAYING
-GAME NAME HERE"
+TOW TREK"
 align = 1
 valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 35.0
-margin_right = 182.0
-margin_bottom = 39.0
+margin_top = 173.0
+margin_right = 635.0
+margin_bottom = 177.0
+
+[node name="Label5" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 181.0
+margin_right = 635.0
+margin_bottom = 223.0
+custom_fonts/font = ExtResource( 4 )
+text = "ART:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 43.0
-margin_right = 182.0
-margin_bottom = 74.0
-text = "ART:
-JestemStefan"
+margin_top = 227.0
+margin_right = 635.0
+margin_bottom = 253.0
+custom_fonts/font = ExtResource( 3 )
+text = "JestemStefan"
 align = 1
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 78.0
-margin_right = 182.0
-margin_bottom = 82.0
+margin_top = 257.0
+margin_right = 635.0
+margin_bottom = 261.0
 
 [node name="Label3" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 86.0
-margin_right = 182.0
-margin_bottom = 117.0
-text = "MUSIC AND AUDIO EFFECTS:
-Dawdle"
+margin_top = 265.0
+margin_right = 635.0
+margin_bottom = 307.0
+custom_fonts/font = ExtResource( 4 )
+text = "MUSIC AND SFX:"
+align = 1
+
+[node name="Label6" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 311.0
+margin_right = 635.0
+margin_bottom = 337.0
+custom_fonts/font = ExtResource( 3 )
+text = "Craig Alan Carroll"
 align = 1
 
 [node name="HSeparator3" type="HSeparator" parent="CenterContainer/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 121.0
-margin_right = 182.0
-margin_bottom = 125.0
+margin_top = 341.0
+margin_right = 635.0
+margin_bottom = 345.0
 
 [node name="Label4" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 129.0
-margin_right = 182.0
-margin_bottom = 177.0
-text = "PROGRAMMING:
-JestemStefan
-Zaraza"
+margin_top = 349.0
+margin_right = 635.0
+margin_bottom = 391.0
+custom_fonts/font = ExtResource( 4 )
+text = "PROGRAMMING:"
 align = 1
+
+[node name="Label7" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 395.0
+margin_right = 635.0
+margin_bottom = 450.0
+custom_fonts/font = ExtResource( 3 )
+text = "Grzegorz Pulawski
+JestemStefan"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator6" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+margin_top = 454.0
+margin_right = 635.0
+margin_bottom = 458.0
+
+[node name="Label8" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 462.0
+margin_right = 635.0
+margin_bottom = 504.0
+custom_fonts/font = ExtResource( 4 )
+text = "FONT:"
+align = 1
+
+[node name="Label9" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 508.0
+margin_right = 635.0
+margin_bottom = 534.0
+custom_fonts/font = ExtResource( 3 )
+text = "Rajdhani by Indian Type Foundry (OFL)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator5" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+margin_top = 538.0
+margin_right = 635.0
+margin_bottom = 542.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HSeparator4" type="HSeparator" parent="CenterContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 181.0
-margin_right = 182.0
-margin_bottom = 185.0
+margin_top = 546.0
+margin_right = 635.0
+margin_bottom = 550.0
 
 [node name="ReturnButton" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 189.0
-margin_right = 182.0
-margin_bottom = 209.0
+margin_top = 554.0
+margin_right = 635.0
+margin_bottom = 602.0
+custom_fonts/font = ExtResource( 4 )
 text = "Return"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ReturnButton" to="." method="_onReturnButtonPressed"]
