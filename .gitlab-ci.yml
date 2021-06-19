@@ -1,7 +1,8 @@
 image: barichello/godot-ci:3.3.2
 
 variables:
-  EXPORT_NAME: GWJ34
+  EXPORT_NAME: TowTrek
+  ITCHIO_NAME: pulawskig/tow-trek
 
 stages:
   - export
@@ -69,3 +70,18 @@ pages:
   artifacts:
     paths:
       - public
+
+itchio:
+ stage: deploy
+ rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+ dependencies:
+   - web
+   - windows
+   - linux
+   - windows
+ script:
+   - butler push build/web $ITCHIO_NAME:web-stable
+   - butler push build/windows $ITCHIO_NAME:windows-stable
+   - butler push build/linux $ITCHIO_NAME:linux-stable
+   - butler push build/macos $ITCHIO_NAME:macosx-stable
