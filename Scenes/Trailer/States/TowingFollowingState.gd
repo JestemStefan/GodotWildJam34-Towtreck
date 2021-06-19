@@ -8,14 +8,18 @@ func OnStateLoad(parameters: Array):
 	celestialBody.hook_to_trailer(target)
 	
 func OnStateUnload():
-	if celestialBody is Planet:
-		celestialBody.unhook_to_orbit()
-	else:
-		celestialBody.unhook_from_trailer()
+	pass
 		
 func Process(delta: float):
 	if Input.is_action_just_pressed("select"):
 		if !firstInputIgnored:
 			firstInputIgnored = true
 		else:
-			stateMachine.SetState("empty", false, [ship, true])
+			var ret
+			if celestialBody is Planet:
+				ret = celestialBody.unhook_to_orbit()
+			else:
+				ret = celestialBody.unhook_from_trailer()
+				
+			if ret == OK:
+				stateMachine.SetState("empty", false, [ship, true])

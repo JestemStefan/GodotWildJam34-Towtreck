@@ -29,8 +29,12 @@ func _process(delta):
 				objectivesUI.SetObjective("planet_" + String(template.orbit), true)
 	
 	for template in orbit_tasks:
-		if !occupied_orbits.values().has(template.orbit):
-			objectivesUI.SetObjective("planet_" + String(template.orbit), false)
+		var found = false
+		for orbit in occupied_orbits.values():
+			if abs(template.orbit - orbit) < 10:
+				found = true
+				break
+		objectivesUI.SetObjective("planet_" + String(template.orbit), found)
 	
 # planets fields - orbit: float, rocksPercent: int, hydrogenPercent: int, icePercent: int, minimumMass: int
 # resource clouds - arrays of positions

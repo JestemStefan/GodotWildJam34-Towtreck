@@ -21,3 +21,4 @@ func hook_to_trailer(trailer: TrailerBase):
 	
 func unhook_from_trailer():
 	$CollisionShape.disabled = false
+	return OK
