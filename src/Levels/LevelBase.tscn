@@ -32,6 +32,8 @@ environment = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 166.269, 0, -173.706 )
 
 [node name="Camera" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 50, 0 )
+playerPath = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

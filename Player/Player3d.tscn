@@ -35,20 +35,20 @@ normal_texture = ExtResource( 7 )
 [sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 11 )
 
-[sub_resource type="SphereMesh" id=5]
+[sub_resource type="SphereMesh" id=4]
 radius = 0.5
 height = 1.0
 radial_segments = 8
 rings = 4
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 0.425 ), 0.0, 0.0, 0, 0, Vector2( 0.318801, 0.579545 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0521306, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.162791, 0.311047, 1 )
 colors = PoolColorArray( 0, 0.929688, 1, 1, 0, 1, 0.273438, 1, 0.00250244, 0.320313, 0, 1, 1, 1, 1, 1 )
 
-[sub_resource type="Curve3D" id=4]
+[sub_resource type="Curve3D" id=7]
 _data = {
 "points": PoolVector3Array(  ),
 "tilts": PoolRealArray(  )
@@ -88,7 +88,7 @@ lifetime = 0.5
 explosiveness = 0.2
 randomness = 0.02
 local_coords = false
-mesh = SubResource( 5 )
+mesh = SubResource( 4 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -96,8 +96,8 @@ initial_velocity = 10.0
 damping = 50.0
 scale_amount = 2.0
 scale_amount_random = 1.0
-scale_amount_curve = SubResource( 7 )
-color_ramp = SubResource( 8 )
+scale_amount_curve = SubResource( 5 )
+color_ramp = SubResource( 6 )
 
 [node name="Engine_Back2" type="MeshInstance" parent="ShipMesh/Engines"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 2.492, 0.45, 4.048 )
@@ -111,7 +111,7 @@ amount = 128
 lifetime = 0.5
 explosiveness = 0.1
 local_coords = false
-mesh = SubResource( 5 )
+mesh = SubResource( 4 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -119,8 +119,8 @@ initial_velocity = 10.0
 damping = 50.0
 scale_amount = 2.0
 scale_amount_random = 1.0
-scale_amount_curve = SubResource( 7 )
-color_ramp = SubResource( 8 )
+scale_amount_curve = SubResource( 5 )
+color_ramp = SubResource( 6 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -137,7 +137,7 @@ amount = 128
 lifetime = 0.5
 explosiveness = 0.1
 local_coords = false
-mesh = SubResource( 5 )
+mesh = SubResource( 4 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -145,8 +145,8 @@ initial_velocity = 10.0
 damping = 50.0
 scale_amount = 2.0
 scale_amount_random = 1.0
-scale_amount_curve = SubResource( 7 )
-color_ramp = SubResource( 8 )
+scale_amount_curve = SubResource( 5 )
+color_ramp = SubResource( 6 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -163,7 +163,7 @@ amount = 128
 lifetime = 0.5
 explosiveness = 0.1
 local_coords = false
-mesh = SubResource( 5 )
+mesh = SubResource( 4 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -171,8 +171,8 @@ initial_velocity = 10.0
 damping = 50.0
 scale_amount = 2.0
 scale_amount_random = 1.0
-scale_amount_curve = SubResource( 7 )
-color_ramp = SubResource( 8 )
+scale_amount_curve = SubResource( 5 )
+color_ramp = SubResource( 6 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -190,10 +190,15 @@ script = ExtResource( 3 )
 stateType = "towing"
 
 [node name="Path" type="Path" parent="StateMachine/TowingState"]
-curve = SubResource( 4 )
+curve = SubResource( 7 )
 
 [node name="Timer" type="Timer" parent="StateMachine/TowingState"]
 process_mode = 0
 wait_time = 0.1
 
+[node name="SecondaryTimer" type="Timer" parent="StateMachine/TowingState"]
+process_mode = 0
+wait_time = 0.1
+
 [connection signal="timeout" from="StateMachine/TowingState/Timer" to="StateMachine/TowingState" method="SpawnMovingResource"]
+[connection signal="timeout" from="StateMachine/TowingState/SecondaryTimer" to="StateMachine/TowingState" method="PerformSecondaryAction"]

@@ -45,8 +45,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.0506, 0, 0 )
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 0.765438, 0.643509, 0, -0.643509, 0.765438, 0, 50, 59.4524 )
-size = 100.0
-far = 1000.0
 script = ExtResource( 3 )
 
 [node name="Planet_v1" parent="." instance=ExtResource( 1 )]
@@ -94,6 +92,7 @@ shipPath = NodePath("../../Player")
 transform = Transform( 10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 0 )
 material_override = SubResource( 3 )
 cast_shadow = 0
+modulate = Color( 1, 1, 1, 0.509804 )
 double_sided = false
 alpha_cut = 1
 texture = ExtResource( 12 )
