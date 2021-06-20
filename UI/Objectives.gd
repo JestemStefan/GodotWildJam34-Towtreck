@@ -19,7 +19,9 @@ func SetObjective(name: String, isDone: bool):
 	objectives[name].isDone = isDone
 
 func AllDone():
-	for obj in objectives.values():
-		if !obj.isDone:
-			return false
-	return true
+	if objectives.size() > 0:
+		for obj in objectives.values():
+			if !obj.isDone:
+				return false
+		return true
+	return false

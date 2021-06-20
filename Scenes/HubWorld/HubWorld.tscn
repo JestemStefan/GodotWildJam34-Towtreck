@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/HubWorld/Warpgate.tscn" type="PackedScene" id=1]
-[ext_resource path="res://art/Background/HubWorldBackground1.jpg" type="Texture" id=2]
+[ext_resource path="res://art/Background/gwj34_hubworld_background.jpg" type="Texture" id=2]
 [ext_resource path="res://Player/Player3d.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/HubWorld/HubWorld.gd" type="Script" id=4]
+[ext_resource path="res://Player/Camera.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 2 )
@@ -12,8 +13,11 @@ panorama = ExtResource( 2 )
 background_mode = 2
 background_sky = SubResource( 1 )
 background_sky_custom_fov = 70.0
+background_sky_orientation = Basis( -0.694047, -0.129687, 0.708153, -0.468055, 0.828668, -0.306975, -0.547013, -0.544509, -0.635835 )
 background_energy = 2.0
 ambient_light_color = Color( 0, 0.282353, 0.360784, 1 )
+glow_enabled = true
+glow_strength = 1.26
 
 [node name="HubWorld" type="Spatial"]
 script = ExtResource( 4 )
@@ -22,15 +26,13 @@ script = ExtResource( 4 )
 environment = SubResource( 2 )
 
 [node name="Warpgate" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.394 )
+transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, -76.5886, 0, -128.625 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.878217, 0, -0.478263, 0.181719, 0.925004, 0.333684, 0.442395, -0.379957, 0.812354, 0, 23.6353, 33.462 )
+transform = Transform( 0.801205, 0.0574663, -0.595624, 0.181719, 0.925004, 0.333685, 0.570131, -0.375586, 0.730675, 0, 23.6353, 33.462 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.113949, 0.993487, 0, -0.993487, 0.113949, 0, 75.0325, 3.81722 )
-projection = 1
-size = 100.0
-far = 1000.0
+[node name="Camera" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 50, 0 )
+playerPath = NodePath("../Player")

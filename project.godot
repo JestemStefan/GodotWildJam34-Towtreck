@@ -58,6 +58,11 @@ _global_script_classes=[ {
 "class": "TrailerBase",
 "language": "GDScript",
 "path": "res://Scenes/Trailer/TrailerBase.gd"
+}, {
+"base": "Spatial",
+"class": "Warpgate",
+"language": "GDScript",
+"path": "res://src/HubWorld/Warpgate.gd"
 } ]
 _global_script_class_icons={
 "CelestialBody": "",
@@ -69,7 +74,8 @@ _global_script_class_icons={
 "State": "",
 "StateMachine": "",
 "Sun": "",
-"TrailerBase": ""
+"TrailerBase": "",
+"Warpgate": ""
 }
 
 [application]
