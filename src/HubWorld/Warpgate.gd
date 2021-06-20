@@ -70,9 +70,17 @@ func warp_to_level(level_idx: int):
 	match level_idx:
 		
 		Destinations.HUB:
+			AudioManager.play_single_music_track(0)
+			AudioManager.play_single_music_track(1)
+			AudioManager.play_single_music_track(2)
+			AudioManager.stop_single_music_track(3)
+			
 			get_tree().change_scene("res://Scenes/HubWorld/HubWorld.tscn")
 		
 		Destinations.LVL_1:
+			
+			AudioManager.play_all_music_tracks()
+			
 			var planet1 = {
 							orbit = 50,
 							icePercent = 20,

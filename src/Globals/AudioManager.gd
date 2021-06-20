@@ -16,12 +16,8 @@ onready var _musicAudioAnimPlayer_instance: PackedScene = preload("res://Audio/M
 func _ready():
 	spawn_music_players()
 	music_sync_animPlayer.play("SynchronizedMusic")
-	play_all_music_tracks()
-
-
-func _process(delta):
-	if Input.is_action_just_pressed("ui_home"):
-		stop_all_music_tracks()
+	
+	play_single_music_track(0)
 
 
 func spawn_music_players():
