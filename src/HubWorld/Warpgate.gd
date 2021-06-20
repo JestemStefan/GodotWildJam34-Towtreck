@@ -147,7 +147,7 @@ func warp_to_level(level_idx: int):
 			}
 			var planet3 = {
 				orbit = 200,
-				rockPercent = 25,
+				rocksPercent = 25,
 				hydrogenPercent = 25,
 				icePercent = 50
 			}

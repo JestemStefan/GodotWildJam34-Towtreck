@@ -58,7 +58,7 @@ func grow_planet(resourceCloud: GameResource):
 		3:
 			iceWeight += 1
 	
-	print(materialWeight, " ", hydrogenWeight, " ", rocksWeight, " ", iceWeight)
+#	print(materialWeight, " ", hydrogenWeight, " ", rocksWeight, " ", iceWeight)
 
 
 func shrink_planet(resourceCloud: GameResource):
@@ -80,7 +80,7 @@ func shrink_planet(resourceCloud: GameResource):
 	planet_weight -= 0.5 + (planet_weight * 0.01)
 	update_size()
 	
-	print(materialWeight, " ", hydrogenWeight, " ", rocksWeight, " ", iceWeight)
+#	print(materialWeight, " ", hydrogenWeight, " ", rocksWeight, " ", iceWeight)
 
 
 func update_size():

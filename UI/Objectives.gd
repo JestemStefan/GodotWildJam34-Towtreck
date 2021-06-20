@@ -8,6 +8,11 @@ var objectives: Dictionary = {}
 
 func _ready():
 	LevelManager.objectivesUI = self
+	
+func _process(delta):
+	if Input.is_action_just_pressed("ui_home"):
+		for obj in objectives.values():
+			obj.isDone = true
 
 func AddObjective(name: String, label: String):
 	var newObj = objectivePart.instance()

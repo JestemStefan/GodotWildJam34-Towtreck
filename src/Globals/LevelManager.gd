@@ -122,7 +122,7 @@ func get_free_orbit(planet) -> Position3D:
 		
 		# if distance too other orbit is too small then orbit is occupied
 		if abs(orbit_r - requested_orbit_r) < orbit_spacing:
-			print("This orbit is occupied. Move planet somehwere else")
+#			print("This orbit is occupied. Move planet somehwere else")
 			return null
 	
 	# if not then it's free.
@@ -159,8 +159,8 @@ func release_orbit(orbital_spot: Position3D):
 	# delete orbit from the list so it will became available
 	var orbit_r: float = round(current_sun.global_transform.origin.distance_to(orbital_spot.global_transform.origin))
 	
-	print_debug("orbit to release: " + str(orbit_r))
-	print_debug(occupied_orbits.values())
+#	print_debug("orbit to release: " + str(orbit_r))
+#	print_debug(occupied_orbits.values())
 	for key in occupied_orbits:
 		if occupied_orbits[key] == orbit_r:
 			occupied_orbits.erase(key)
