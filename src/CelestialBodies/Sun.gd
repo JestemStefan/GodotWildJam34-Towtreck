@@ -12,3 +12,4 @@ func _ready():
 func unhook_from_trailer():
 	.unhook_from_trailer()
 	stateMachine.SetState("stationary")
+	return OK
