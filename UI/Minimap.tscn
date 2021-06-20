@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://art/Minimap/minimap_grid.png" type="Texture" id=1]
 [ext_resource path="res://art/Minimap/player_marker.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://art/Minimap/hydrogen_marker.png" type="Texture" id=8]
 [ext_resource path="res://art/Minimap/rocks_marker.png" type="Texture" id=9]
 [ext_resource path="res://art/Minimap/ice_marker.png" type="Texture" id=10]
+[ext_resource path="res://art/Minimap/sunspot_marker.png" type="Texture" id=11]
 
 [node name="Minimap" type="MarginContainer"]
 anchor_left = 1.0
@@ -76,3 +77,7 @@ texture = ExtResource( 8 )
 [node name="RocksCloud" type="Sprite" parent="MarginContainer"]
 visible = false
 texture = ExtResource( 9 )
+
+[node name="SunSpot" type="Sprite" parent="MarginContainer"]
+visible = false
+texture = ExtResource( 11 )

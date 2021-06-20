@@ -14,13 +14,14 @@ onready var trailer: Sprite = $MarginContainer/Trailer
 onready var hydrogenCloud: Sprite = $MarginContainer/HydrogenCloud
 onready var rocksCloud: Sprite = $MarginContainer/RocksCloud
 onready var iceCloud: Sprite = $MarginContainer/IceCloud
+onready var sunSpot: Sprite = $MarginContainer/SunSpot
 onready var ship: Player = get_node(shipPath)
 
 var scale: Vector2
 var markerTypeDict: Dictionary
 var visibleMarkers: Dictionary
 
-enum MarkerTypes { Player = 0, Planet = 1, Sun = 2, Warpgate = 3, Trailer = 4, HydrogenCloud = 5, RocksCloud = 6, IceCloud = 7 }
+enum MarkerTypes { Player = 0, Planet = 1, Sun = 2, Warpgate = 3, Trailer = 4, HydrogenCloud = 5, RocksCloud = 6, IceCloud = 7, SunSpot = 8 }
 
 func _ready():
 	player.position = grid.rect_size / 2
@@ -32,7 +33,8 @@ func _ready():
 		MarkerTypes.Trailer: trailer,
 		MarkerTypes.HydrogenCloud: hydrogenCloud,
 		MarkerTypes.RocksCloud: rocksCloud,
-		MarkerTypes.IceCloud: iceCloud
+		MarkerTypes.IceCloud: iceCloud,
+		MarkerTypes.SunSpot: sunSpot
 	}
 	
 	var nodes = get_tree().get_nodes_in_group("minimap_targets")

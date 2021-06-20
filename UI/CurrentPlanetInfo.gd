@@ -13,10 +13,10 @@ func _process(delta):
 	if player.stateMachine.currentStateType == "towing":
 		var trailer = player.stateMachine.currentState.towingTarget as TrailerBase
 		var body = trailer.celestialBody as CelestialBody
-		if is_instance_valid(body) and body is Planet and !is_instance_valid(currentPlanet):
+		if trailer.IsTowingCelestialBody() and body is Planet and !is_instance_valid(currentPlanet):
 			currentPlanet = body
 			show()
-		elif (!is_instance_valid(body) or !(body is Planet)) and is_instance_valid(currentPlanet):
+		elif (!trailer.IsTowingCelestialBody() or !(body is Planet)) and is_instance_valid(currentPlanet):
 			currentPlanet = null
 			hide()
 	

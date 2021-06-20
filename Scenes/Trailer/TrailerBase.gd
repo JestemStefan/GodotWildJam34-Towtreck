@@ -3,7 +3,10 @@ class_name TrailerBase
 
 export var speed: float = 8
 export var velocityFall: float = 4
-export var playerDistance: float = 20
+export var playerDistanceForPlanet: float = 20
+export var playerDistanceForSun: float = 50
+
+var playerDistance: float setget, getPlayerDistance
 
 var isSpinning: bool = false
 var spinning_speed: int = 1
@@ -16,6 +19,11 @@ var markerType = 4
 
 # Sounds
 onready var sfx_attach: AudioStreamSample = preload("res://Audio/SFX/GWJ34_HookupTrailer.wav")
+
+func getPlayerDistance():
+	if IsTowingCelestialBody() and celestialBody is Sun:
+		return playerDistanceForSun
+	return playerDistanceForPlanet
 
 func _ready():
 	add_to_group("minimap_targets", true)
@@ -37,6 +45,7 @@ func AttachToShip(ship: Player):
 
 func AttachCelestialBody(body):
 	if stateMachine.currentStateType == "empty":
+		
 		self.celestialBody = body
 		stateMachine.SetState("towing", false, [ship, false, body])
 
