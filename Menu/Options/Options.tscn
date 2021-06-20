@@ -76,11 +76,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 710.0
+margin_right = 1210.0
+margin_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 500, 1080 )
+color = Color( 0, 0, 0, 0.588235 )
+
 [node name="HotkeysContainer" type="VBoxContainer" parent="."]
-margin_left = 842.0
+margin_left = 760.0
 margin_top = 334.0
-margin_right = 1078.0
+margin_right = 1160.0
 margin_bottom = 746.0
+rect_min_size = Vector2( 400, 0 )
 custom_constants/separation = 80
 
 [node name="VolumeContainer" type="VBoxContainer" parent="HotkeysContainer"]
@@ -105,17 +115,22 @@ feedback_sound_path = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HotkeysContainer/VolumeContainer/VolumeSlider"]
 
-[node name="GridContainer" type="GridContainer" parent="HotkeysContainer"]
-margin_right = 236.0
+[node name="CenterContainer" type="CenterContainer" parent="HotkeysContainer"]
+margin_right = 400.0
+margin_bottom = 284.0
+
+[node name="GridContainer" type="GridContainer" parent="HotkeysContainer/CenterContainer"]
+margin_left = 62.0
+margin_right = 338.0
 margin_bottom = 284.0
 custom_constants/vseparation = 10
-custom_constants/hseparation = 10
+custom_constants/hseparation = 50
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HotkeysContainer/GridContainer"]
+[node name="Label" type="Label" parent="HotkeysContainer/CenterContainer/GridContainer"]
 margin_top = 3.0
 margin_right = 165.0
 margin_bottom = 29.0
@@ -123,16 +138,16 @@ custom_fonts/font = ExtResource( 4 )
 text = "Thrust forwards:"
 align = 2
 
-[node name="RebindableAction" parent="HotkeysContainer/GridContainer" instance=ExtResource( 2 )]
-margin_left = 175.0
-margin_right = 236.0
+[node name="RebindableAction" parent="HotkeysContainer/CenterContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 215.0
+margin_right = 276.0
 margin_bottom = 32.0
 custom_fonts/font = ExtResource( 4 )
 keep_pressed_outside = true
 text = "W"
 action = "thrust_forwards"
 
-[node name="Label2" type="Label" parent="HotkeysContainer/GridContainer"]
+[node name="Label2" type="Label" parent="HotkeysContainer/CenterContainer/GridContainer"]
 margin_top = 45.0
 margin_right = 165.0
 margin_bottom = 71.0
@@ -140,16 +155,16 @@ custom_fonts/font = ExtResource( 4 )
 text = "Thurst backwards:"
 align = 2
 
-[node name="RebindableAction2" parent="HotkeysContainer/GridContainer" instance=ExtResource( 2 )]
-margin_left = 175.0
+[node name="RebindableAction2" parent="HotkeysContainer/CenterContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 215.0
 margin_top = 42.0
-margin_right = 236.0
+margin_right = 276.0
 margin_bottom = 74.0
 custom_fonts/font = ExtResource( 4 )
 text = "S"
 action = "thrust_backwards"
 
-[node name="Label3" type="Label" parent="HotkeysContainer/GridContainer"]
+[node name="Label3" type="Label" parent="HotkeysContainer/CenterContainer/GridContainer"]
 margin_top = 87.0
 margin_right = 165.0
 margin_bottom = 113.0
@@ -157,16 +172,16 @@ custom_fonts/font = ExtResource( 4 )
 text = "Turn left:"
 align = 2
 
-[node name="RebindableAction3" parent="HotkeysContainer/GridContainer" instance=ExtResource( 2 )]
-margin_left = 175.0
+[node name="RebindableAction3" parent="HotkeysContainer/CenterContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 215.0
 margin_top = 84.0
-margin_right = 236.0
+margin_right = 276.0
 margin_bottom = 116.0
 custom_fonts/font = ExtResource( 4 )
 text = "A"
 action = "turn_left"
 
-[node name="Label4" type="Label" parent="HotkeysContainer/GridContainer"]
+[node name="Label4" type="Label" parent="HotkeysContainer/CenterContainer/GridContainer"]
 margin_top = 129.0
 margin_right = 165.0
 margin_bottom = 155.0
@@ -174,16 +189,16 @@ custom_fonts/font = ExtResource( 4 )
 text = "Turn right:"
 align = 2
 
-[node name="RebindableAction4" parent="HotkeysContainer/GridContainer" instance=ExtResource( 2 )]
-margin_left = 175.0
+[node name="RebindableAction4" parent="HotkeysContainer/CenterContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 215.0
 margin_top = 126.0
-margin_right = 236.0
+margin_right = 276.0
 margin_bottom = 158.0
 custom_fonts/font = ExtResource( 4 )
 text = "D"
 action = "turn_right"
 
-[node name="Label5" type="Label" parent="HotkeysContainer/GridContainer"]
+[node name="Label5" type="Label" parent="HotkeysContainer/CenterContainer/GridContainer"]
 margin_top = 171.0
 margin_right = 165.0
 margin_bottom = 197.0
@@ -191,15 +206,15 @@ custom_fonts/font = ExtResource( 4 )
 text = "Select / main action:"
 align = 2
 
-[node name="RebindableAction5" parent="HotkeysContainer/GridContainer" instance=ExtResource( 2 )]
-margin_left = 175.0
+[node name="RebindableAction5" parent="HotkeysContainer/CenterContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 215.0
 margin_top = 168.0
-margin_right = 236.0
+margin_right = 276.0
 margin_bottom = 200.0
 custom_fonts/font = ExtResource( 4 )
 action = "select"
 
-[node name="Label6" type="Label" parent="HotkeysContainer/GridContainer"]
+[node name="Label6" type="Label" parent="HotkeysContainer/CenterContainer/GridContainer"]
 margin_top = 213.0
 margin_right = 165.0
 margin_bottom = 239.0
@@ -207,16 +222,16 @@ custom_fonts/font = ExtResource( 4 )
 text = "Gather action:"
 align = 2
 
-[node name="RebindableAction6" parent="HotkeysContainer/GridContainer" instance=ExtResource( 2 )]
-margin_left = 175.0
+[node name="RebindableAction6" parent="HotkeysContainer/CenterContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 215.0
 margin_top = 210.0
-margin_right = 236.0
+margin_right = 276.0
 margin_bottom = 242.0
 custom_fonts/font = ExtResource( 4 )
 text = "Ctrl"
 action = "succ"
 
-[node name="Label7" type="Label" parent="HotkeysContainer/GridContainer"]
+[node name="Label7" type="Label" parent="HotkeysContainer/CenterContainer/GridContainer"]
 margin_top = 255.0
 margin_right = 165.0
 margin_bottom = 281.0
@@ -224,10 +239,10 @@ custom_fonts/font = ExtResource( 4 )
 text = "Secondary action:"
 align = 2
 
-[node name="RebindableAction7" parent="HotkeysContainer/GridContainer" instance=ExtResource( 2 )]
-margin_left = 175.0
+[node name="RebindableAction7" parent="HotkeysContainer/CenterContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 215.0
 margin_top = 252.0
-margin_right = 236.0
+margin_right = 276.0
 margin_bottom = 284.0
 custom_fonts/font = ExtResource( 4 )
 text = "Alt"
@@ -235,7 +250,7 @@ action = "special"
 
 [node name="ReturnButton" type="Button" parent="HotkeysContainer"]
 margin_top = 364.0
-margin_right = 236.0
+margin_right = 400.0
 margin_bottom = 412.0
 custom_fonts/font = ExtResource( 5 )
 text = "Return"
@@ -395,6 +410,6 @@ __meta__ = {
 
 [connection signal="pressed" from="HotkeysContainer/ReturnButton" to="HotkeysContainer/ReturnButton" method="_onPressed"]
 
-[editable path="HotkeysContainer/GridContainer/RebindableAction5"]
-[editable path="HotkeysContainer/GridContainer/RebindableAction6"]
-[editable path="HotkeysContainer/GridContainer/RebindableAction7"]
+[editable path="HotkeysContainer/CenterContainer/GridContainer/RebindableAction5"]
+[editable path="HotkeysContainer/CenterContainer/GridContainer/RebindableAction6"]
+[editable path="HotkeysContainer/CenterContainer/GridContainer/RebindableAction7"]
