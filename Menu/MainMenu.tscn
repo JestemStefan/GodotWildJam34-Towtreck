@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Menu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://UI/UILabelFontHeader.tres" type="DynamicFont" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://art/TruckShip/TruckShipTexture_Albedo.jpg" type="Texture" id=17]
 [ext_resource path="res://art/TruckShip/TruckShip_Crane_Albedo.jpg" type="Texture" id=18]
 [ext_resource path="res://art/TruckShip/TruckShipTexture_Normal.jpg" type="Texture" id=19]
+[ext_resource path="res://art/Space-Theme.png" type="Texture" id=20]
+[ext_resource path="res://art/No place like home.png" type="Texture" id=21]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -318,6 +320,28 @@ scale_amount_curve = SubResource( 12 )
 color_ramp = SubResource( 13 )
 __meta__ = {
 "_editor_description_": ""
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 1371.07
+margin_top = 962.926
+margin_right = 2071.07
+margin_bottom = 1162.93
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 1727.92
+margin_top = 822.421
+margin_right = 2607.92
+margin_bottom = 2022.42
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
 }
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_onStartButtonPressed"]
