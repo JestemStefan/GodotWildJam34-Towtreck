@@ -4,6 +4,8 @@ var current_level: Node = null
 var current_sun = null
 var objectivesUI = null
 
+var warp_to_hub = null
+
 var orbit_instance = preload("res://Scenes/CelestialBodies/Orbit.tscn")
 var occupied_orbits: Dictionary = {}
 
@@ -20,7 +22,8 @@ var orbit_tasks: Array = []
 
 func _process(delta):
 	if is_instance_valid(objectivesUI) and objectivesUI.AllDone():
-		print("All done!")
+		(warp_to_hub as Warpgate).enable()
+	
 		
 	for planet in occupied_orbits:
 		var orbit = occupied_orbits[planet]
