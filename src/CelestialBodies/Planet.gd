@@ -102,5 +102,6 @@ func unhook_to_orbit() -> int:
 		return FAILED
 	
 	# else place planet in orbit
+	AudioManager.play_sfx(sfx_disconnect)
 	stateMachine.SetState("orbitting", false, [orbital_parking_spot])
 	return OK

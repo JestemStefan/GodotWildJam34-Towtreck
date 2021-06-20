@@ -9,6 +9,9 @@ var markerType = 3
 enum Destinations{HUB, LVL_1, LVL_2, LVL_3, LVL_4, LVL_5}
 export (Destinations) var WarpTo = Destinations.LVL_1
 
+onready var sfx_passive: AudioStreamSample = preload("res://Audio/SFX/GWJ34_WarpPassiveLoop.wav")
+onready var sfx_active: AudioStreamSample = preload("res://Audio/SFX/GWJ34_WarpActive.wav")
+
 var isEnabled: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -54,11 +57,13 @@ func _process(delta):
 
 func open_warpgate():
 	isReadyToWarp = true
+	AudioManager.play_sfx(sfx_passive, true, -6)
 	$AnimationPlayer.play("Turn_On")
 
 
 func close_warpgate():
 	isReadyToWarp = false
+	AudioManager.stop_sfx(sfx_passive)
 	$AnimationPlayer.play("Turn_Off")
 
 
@@ -85,6 +90,8 @@ func _on_Warpgate_body_exited(body):
 
 
 func warp_to_level(level_idx: int):
+	
+	AudioManager.play_sfx(sfx_active)
 	
 	match level_idx:
 		

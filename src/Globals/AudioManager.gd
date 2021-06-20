@@ -121,7 +121,7 @@ func stop_all_music_tracks():
 
 
 
-func play_sfx(sfx_sound: AudioStreamSample, should_loop: bool = false):
+func play_sfx(sfx_sound: AudioStreamSample, should_loop: bool = false, volume: float = 0):
 	
 	# create new audio player and spawn it
 	var sfx_player = AudioStreamPlayer.new()
@@ -136,6 +136,7 @@ func play_sfx(sfx_sound: AudioStreamSample, should_loop: bool = false):
 	# assign selected sound to player and apply options
 	sfx_player.set_bus("SFX") 							# assign audio bus
 	sfx_player.stream = sfx_sound						# assign sound that will be played
+	sfx_player.volume_db = volume
 	
 	(sfx_player.stream as AudioStreamSample).set_loop_mode(int(should_loop)) 	# enable or diable looping
 	
