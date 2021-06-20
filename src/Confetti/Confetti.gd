@@ -6,14 +6,23 @@ func _ready():
 
 
 func play_once():
+	$Label.show()
 	for ps in get_children():
-		(ps as CPUParticles2D).emitting = true
+		if ps is CPUParticles2D:
+			if (ps as CPUParticles2D).emitting == false:
+				(ps as CPUParticles2D).emitting = true
 	
-	yield(get_tree().create_timer(5), "timeout")
+	if is_instance_valid(self):
+		yield(get_tree().create_timer(5.0), "timeout")
 	
-	call_deferred("free")
+	for ps in get_children():
+		if ps is CPUParticles2D:
+			ps.call_deferred("free")
 
 
 func play_loop():
+	$Label.hide()
 	for ps in get_children():
-		(ps as CPUParticles2D).emitting = true
+		if ps is CPUParticles2D:
+			if (ps as CPUParticles2D).emitting == false:
+				(ps as CPUParticles2D).emitting = true
