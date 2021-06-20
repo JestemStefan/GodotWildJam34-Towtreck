@@ -10,6 +10,7 @@ var orbit_instance = preload("res://Scenes/CelestialBodies/Orbit.tscn")
 var occupied_orbits: Dictionary = {}
 
 var levelBasePack = preload("res://src/Levels/LevelBase.tscn")
+var sunPack = preload("res://Scenes/CelestialBodies/Sun.tscn")
 var sunSpotPack = preload("res://Scenes/LevelElements/SunSpotArea.tscn")
 var growingTrailerPack = preload("res://Scenes/Trailer/GrowingTrailer.tscn")
 var resourceCloudPack = preload("res://World/Resources/Resource.tscn")
@@ -21,9 +22,11 @@ var isSunPlacedCorrectly: bool = false
 var orbit_tasks: Array = []
 
 func _process(delta):
-	if is_instance_valid(objectivesUI) and objectivesUI.AllDone():
-		(warp_to_hub as Warpgate).enable()
+	if !is_instance_valid(current_level) or current_level is HubWorld:
+		return
 	
+	if is_instance_valid(objectivesUI) and objectivesUI.AllDone():
+		warp_to_hub.enable()
 		
 	for planet in occupied_orbits:
 		var orbit = occupied_orbits[planet]
@@ -37,18 +40,27 @@ func _process(delta):
 			if abs(template.orbit - orbit) < 10:
 				found = true
 				break
-		objectivesUI.SetObjective("planet_" + String(template.orbit), found)
+		if !found:
+			objectivesUI.SetObjective("planet_" + String(template.orbit), false)
 	
-# planets fields - orbit: float, rocksPercent: int, hydrogenPercent: int, icePercent: int, minimumMass: int
+# planets fields - orbit: float, rocksPercent: int, hydrogenPercent: int, icePercent: int
 # resource clouds - arrays of positions
-func SetupLevel(sunPosition: Vector2, planets: Array, hydrogenClouds: Array, rockClouds: Array, iceClouds: Array):
+func SetupLevel(sunPosition: Vector2, sunSpotPosition: Vector2, planets: Array, hydrogenClouds: Array, rockClouds: Array, iceClouds: Array):
 	current_level = null
+	occupied_orbits.clear()
+	orbit_tasks.clear()
+	
 	get_tree().change_scene("res://src/Levels/LevelBase.tscn")
 	while current_level == null:
 		yield(get_tree().create_timer(0.1), "timeout")
 	
+	var sun = sunPack.instance()
+	sun.translation = Vector3(sunPosition.x, 0, sunPosition.y)
+	current_level.add_child(sun)
+	current_sun = sun
+	
 	var sunSpot = sunSpotPack.instance()
-	sunSpot.translation = Vector3(sunPosition.x, 0, sunPosition.y)
+	sunSpot.translation = Vector3(sunSpotPosition.x, 0, sunSpotPosition.y)
 	current_level.add_child(sunSpot)
 	objectivesUI.AddObjective("sun", "Set the star in the correct spot")
 	
