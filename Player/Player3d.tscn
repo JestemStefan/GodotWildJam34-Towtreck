@@ -15,11 +15,11 @@
 [ext_resource path="res://art/TruckShip/TruckShip_Engine_Material.material" type="Material" id=13]
 [ext_resource path="res://art/Particles/EngineSmokeParticle.tres" type="Material" id=14]
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="CapsuleShape" id=14]
 radius = 4.02061
 height = 4.62129
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=9]
 albedo_texture = ExtResource( 8 )
 roughness_texture = ExtResource( 6 )
 emission_enabled = true
@@ -32,23 +32,23 @@ normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 7 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=10]
 albedo_texture = ExtResource( 11 )
 
-[sub_resource type="SphereMesh" id=8]
+[sub_resource type="SphereMesh" id=11]
 radius = 0.5
 height = 1.0
 radial_segments = 8
 rings = 4
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=12]
 _data = [ Vector2( 0, 0.425 ), 0.0, 0.0, 0, 0, Vector2( 0.318801, 0.579545 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0521306, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=13]
 offsets = PoolRealArray( 0, 0.162791, 0.311047, 1 )
 colors = PoolColorArray( 0, 0.929688, 1, 1, 0, 1, 0.273438, 1, 0.00250244, 0.320313, 0, 1, 1, 1, 1, 1 )
 
-[sub_resource type="Curve3D" id=7]
+[sub_resource type="Curve3D" id=15]
 _data = {
 "points": PoolVector3Array(  ),
 "tilts": PoolRealArray(  )
@@ -59,19 +59,19 @@ collision/safe_margin = 0.005
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 14 )
 
 [node name="ShipMesh" type="Spatial" parent="."]
 
 [node name="MainBody" type="MeshInstance" parent="ShipMesh"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 mesh = ExtResource( 9 )
-material/0 = SubResource( 2 )
+material/0 = SubResource( 9 )
 
 [node name="Crane" type="MeshInstance" parent="ShipMesh"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.76861, 2.77199 )
 mesh = ExtResource( 10 )
-material/0 = SubResource( 3 )
+material/0 = SubResource( 10 )
 
 [node name="Engines" type="Spatial" parent="ShipMesh"]
 
@@ -88,7 +88,7 @@ lifetime = 0.5
 explosiveness = 0.2
 randomness = 0.02
 local_coords = false
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -96,8 +96,8 @@ initial_velocity = 10.0
 damping = 50.0
 scale_amount = 2.0
 scale_amount_random = 1.0
-scale_amount_curve = SubResource( 5 )
-color_ramp = SubResource( 6 )
+scale_amount_curve = SubResource( 12 )
+color_ramp = SubResource( 13 )
 
 [node name="Engine_Back2" type="MeshInstance" parent="ShipMesh/Engines"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 2.492, 0.45, 4.048 )
@@ -111,7 +111,7 @@ amount = 128
 lifetime = 0.5
 explosiveness = 0.1
 local_coords = false
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -119,8 +119,8 @@ initial_velocity = 10.0
 damping = 50.0
 scale_amount = 2.0
 scale_amount_random = 1.0
-scale_amount_curve = SubResource( 5 )
-color_ramp = SubResource( 6 )
+scale_amount_curve = SubResource( 12 )
+color_ramp = SubResource( 13 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -137,7 +137,7 @@ amount = 128
 lifetime = 0.5
 explosiveness = 0.1
 local_coords = false
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -145,8 +145,8 @@ initial_velocity = 10.0
 damping = 50.0
 scale_amount = 2.0
 scale_amount_random = 1.0
-scale_amount_curve = SubResource( 5 )
-color_ramp = SubResource( 6 )
+scale_amount_curve = SubResource( 12 )
+color_ramp = SubResource( 13 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -163,7 +163,7 @@ amount = 128
 lifetime = 0.5
 explosiveness = 0.1
 local_coords = false
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 direction = Vector3( 0, 0, 1 )
 spread = 5.0
 gravity = Vector3( 0, 0, 0 )
@@ -171,8 +171,8 @@ initial_velocity = 10.0
 damping = 50.0
 scale_amount = 2.0
 scale_amount_random = 1.0
-scale_amount_curve = SubResource( 5 )
-color_ramp = SubResource( 6 )
+scale_amount_curve = SubResource( 12 )
+color_ramp = SubResource( 13 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -190,7 +190,7 @@ script = ExtResource( 3 )
 stateType = "towing"
 
 [node name="Path" type="Path" parent="StateMachine/TowingState"]
-curve = SubResource( 7 )
+curve = SubResource( 15 )
 
 [node name="Timer" type="Timer" parent="StateMachine/TowingState"]
 process_mode = 0

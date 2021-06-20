@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/GodotHead_3D.obj-b99ec2543097494dadcf25dd53a409cc.mesh"
+
+[deps]
+
+files=[ "res://.import/GodotHead_3D.obj-b99ec2543097494dadcf25dd53a409cc.mesh" ]
+
+source_file="res://art/GodotHead/GodotHead_3D.obj"
+dest_files=[ "res://.import/GodotHead_3D.obj-b99ec2543097494dadcf25dd53a409cc.mesh", "res://.import/GodotHead_3D.obj-b99ec2543097494dadcf25dd53a409cc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
