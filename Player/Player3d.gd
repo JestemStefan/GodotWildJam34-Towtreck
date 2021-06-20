@@ -18,10 +18,14 @@ func _physics_process(delta: float):
 	turn += turnChange
 	rotation.y = turn
 	
-	var direction = Vector3(0, 0, Input.get_action_strength("thrust_backwards") - Input.get_action_strength("thrust_forwards")).rotated(Vector3.UP, turn) * speed
+	
+	var direction
+	if global_transform.origin.length() < 600:
+		direction = Vector3(0, 0, Input.get_action_strength("thrust_backwards") - Input.get_action_strength("thrust_forwards")).rotated(Vector3.UP, turn) * speed
+	else:
+		direction = -global_transform.origin.normalized() * speed
 	
 	LevelManager.current_level.rotate_background(direction)
-	
 	velocity += direction
 	velocity = move_and_slide(velocity);
 	velocity -= velocity * delta * velocityFall
