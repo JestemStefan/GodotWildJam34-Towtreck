@@ -1,15 +1,101 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Menu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://UI/UILabelFontHeader.tres" type="DynamicFont" id=2]
+[ext_resource path="res://art/GodotHead/GodotHead_3D.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://art/GodotHead/GodotHeadTexture_albedo.jpg" type="Texture" id=4]
+[ext_resource path="res://art/Background/gwj34_background.jpg" type="Texture" id=5]
+[ext_resource path="res://art/planet/PlanetMaterial.tres" type="Material" id=6]
+[ext_resource path="res://art/planet/CloudMaterial.tres" type="Material" id=7]
+[ext_resource path="res://src/MenuScene/Planet_Spinning.gd" type="Script" id=8]
+[ext_resource path="res://UI/DiscoDuckHalftoneItalic-VZJZ.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://art/TruckShip/TruckShip_Crane.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://art/TruckShip/TruckShip.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://art/TruckShip/TruckShip_Engine.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://art/TruckShip/TruckShipTexture_Emission.jpg" type="Texture" id=13]
+[ext_resource path="res://art/TruckShip/TruckShip_Engine_Material.material" type="Material" id=14]
+[ext_resource path="res://art/Particles/EngineSmokeParticle.tres" type="Material" id=15]
+[ext_resource path="res://art/TruckShip/TruckShipTexture_Roughness.jpg" type="Texture" id=16]
+[ext_resource path="res://art/TruckShip/TruckShipTexture_Albedo.jpg" type="Texture" id=17]
+[ext_resource path="res://art/TruckShip/TruckShip_Crane_Albedo.jpg" type="Texture" id=18]
+[ext_resource path="res://art/TruckShip/TruckShipTexture_Normal.jpg" type="Texture" id=19]
 
-[node name="MainMenu" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+
+uniform vec4 color1 : hint_color = vec4(1, 0, 0, 1);
+uniform vec4 color2 : hint_color = vec4(0, 0, 1, 1);
+
+void fragment() {
+    vec4 current_color = texture(TEXTURE, UV);
+
+    float ratio = SCREEN_UV.x;
+    float iratio = 1.0 - SCREEN_UV.x;
+
+    float new_r = color2.r * ratio + color1.r * iratio;
+    float new_g = color2.g * ratio + color1.g * iratio;
+    float new_b = color2.b * ratio + color1.b * iratio;
+
+    COLOR = vec4(new_r, new_g, new_b, current_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/color1 = Color( 0.588235, 0, 0.537255, 1 )
+shader_param/color2 = Color( 1, 0.658824, 0.176471, 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 160
+font_data = ExtResource( 9 )
+
+[sub_resource type="PanoramaSky" id=2]
+panorama = ExtResource( 5 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 2 )
+
+[sub_resource type="SphereMesh" id=4]
+
+[sub_resource type="SphereMesh" id=5]
+material = ExtResource( 7 )
+radius = 1.01
+height = 2.02
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 17 )
+roughness_texture = ExtResource( 16 )
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 1
+emission_on_uv2 = false
+emission_texture = ExtResource( 13 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 19 )
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_texture = ExtResource( 18 )
+
+[sub_resource type="SphereMesh" id=11]
+radius = 0.5
+height = 1.0
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 0.425 ), 0.0, 0.0, 0, 0, Vector2( 0.318801, 0.579545 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0521306, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0, 0.162791, 0.311047, 1 )
+colors = PoolColorArray( 0, 0.929688, 1, 1, 0, 1, 0.273438, 1, 0.00250244, 0.320313, 0, 1, 1, 1, 1, 1 )
+
+[node name="MainMenu" type="Node"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -52,6 +138,187 @@ margin_right = 161.0
 margin_bottom = 204.0
 custom_fonts/font = ExtResource( 2 )
 text = "Quit Game"
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+margin_top = 72.0
+margin_right = 1920.0
+margin_bottom = 232.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer2"]
+margin_right = 1920.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 1920, 160 )
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer2"]
+material = SubResource( 7 )
+margin_left = 544.0
+margin_top = 1.0
+margin_right = 1375.0
+margin_bottom = 158.0
+custom_fonts/font = SubResource( 8 )
+text = "tow trek"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.91688 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Spatial"]
+environment = SubResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.760372, 0.649488, 0, -0.649488, 0.760372, 0, 6.34604, 0 )
+
+[node name="Planet2" type="Spatial" parent="Spatial"]
+transform = Transform( 0.918446, -0.395546, 0, 0.395546, 0.918446, 0, 0, 0, 1, -13.3003, -8.09633, -13.5071 )
+script = ExtResource( 8 )
+
+[node name="Planet" type="MeshInstance" parent="Spatial/Planet2"]
+transform = Transform( 15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 6 )
+
+[node name="Clouds" type="MeshInstance" parent="Spatial/Planet2"]
+transform = Transform( 15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Axis" type="Spatial" parent="Spatial/Planet2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="GodotHead" type="MeshInstance" parent="Spatial/Planet2/Axis"]
+transform = Transform( 1, 4.16373e-08, 3.57628e-07, -1.99638e-09, 1, -7.45058e-09, 0, -1.30653e-07, 1, 5.71994, 2.68442, -22.2241 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 1 )
+
+[node name="Car" type="Spatial" parent="Spatial/Planet2/Axis"]
+transform = Transform( -0.419996, 0.249888, 0.872445, 0.467498, 0.883551, -0.0280145, -0.777849, 0.3961, -0.487909, 32.8427, -6.43978, -4.49555 )
+
+[node name="ShipMesh" type="Spatial" parent="Spatial/Planet2/Axis/Car"]
+
+[node name="MainBody" type="MeshInstance" parent="Spatial/Planet2/Axis/Car/ShipMesh"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+mesh = ExtResource( 11 )
+material/0 = SubResource( 9 )
+
+[node name="Crane" type="MeshInstance" parent="Spatial/Planet2/Axis/Car/ShipMesh"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.76861, 2.77199 )
+mesh = ExtResource( 10 )
+material/0 = SubResource( 10 )
+
+[node name="Engines" type="Spatial" parent="Spatial/Planet2/Axis/Car/ShipMesh"]
+
+[node name="Engine_Back1" type="MeshInstance" parent="Spatial/Planet2/Axis/Car/ShipMesh/Engines"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -2.49213, 0.450202, 4.04845 )
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 14 )
+
+[node name="EngineSmoke" type="CPUParticles" parent="Spatial/Planet2/Axis/Car/ShipMesh/Engines/Engine_Back1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.746829 )
+material_override = ExtResource( 15 )
+amount = 128
+lifetime = 0.5
+explosiveness = 0.2
+randomness = 0.02
+local_coords = false
+mesh = SubResource( 11 )
+direction = Vector3( 0, 0, 1 )
+spread = 5.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+damping = 50.0
+scale_amount = 2.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 12 )
+color_ramp = SubResource( 13 )
+
+[node name="Engine_Back2" type="MeshInstance" parent="Spatial/Planet2/Axis/Car/ShipMesh/Engines"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 2.492, 0.45, 4.048 )
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 14 )
+
+[node name="EngineSmoke2" type="CPUParticles" parent="Spatial/Planet2/Axis/Car/ShipMesh/Engines/Engine_Back2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.746829 )
+material_override = ExtResource( 15 )
+amount = 128
+lifetime = 0.5
+explosiveness = 0.1
+local_coords = false
+mesh = SubResource( 11 )
+direction = Vector3( 0, 0, 1 )
+spread = 5.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+damping = 50.0
+scale_amount = 2.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 12 )
+color_ramp = SubResource( 13 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Engine_Front1" type="MeshInstance" parent="Spatial/Planet2/Axis/Car/ShipMesh/Engines"]
+transform = Transform( 2.45746, 0, -1.72073, 0, 3, 0, 1.72073, 0, 2.45746, -2, 0.00973618, -4 )
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 14 )
+
+[node name="EngineSmoke3" type="CPUParticles" parent="Spatial/Planet2/Axis/Car/ShipMesh/Engines/Engine_Front1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.746829 )
+material_override = ExtResource( 15 )
+amount = 128
+lifetime = 0.5
+explosiveness = 0.1
+local_coords = false
+mesh = SubResource( 11 )
+direction = Vector3( 0, 0, 1 )
+spread = 5.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+damping = 50.0
+scale_amount = 2.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 12 )
+color_ramp = SubResource( 13 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Engine_Front2" type="MeshInstance" parent="Spatial/Planet2/Axis/Car/ShipMesh/Engines"]
+transform = Transform( 2.45746, 0, 1.72073, 0, 3, 0, -1.72073, 0, 2.45746, 2, 0.00973618, -4 )
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 14 )
+
+[node name="EngineSmoke4" type="CPUParticles" parent="Spatial/Planet2/Axis/Car/ShipMesh/Engines/Engine_Front2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.746829 )
+material_override = ExtResource( 15 )
+amount = 128
+lifetime = 0.5
+explosiveness = 0.1
+local_coords = false
+mesh = SubResource( 11 )
+direction = Vector3( 0, 0, 1 )
+spread = 5.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+damping = 50.0
+scale_amount = 2.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 12 )
+color_ramp = SubResource( 13 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_onStartButtonPressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionButton" to="." method="_onOptionButtonPressed"]
