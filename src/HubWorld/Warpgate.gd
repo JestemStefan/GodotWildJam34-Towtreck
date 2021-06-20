@@ -80,6 +80,8 @@ func warp_to_level(level_idx: int):
 		Destinations.LVL_1:
 			AudioManager.play_all_music_tracks()
 			LevelManager.SetupLevel(Vector2(120, -120), Vector2(-120, 120), [], [], [], [])
+			if LevelManager.completedLevels == 0:
+				LevelManager.completedLevels = 1
 			
 		Destinations.LVL_2:
 			AudioManager.play_all_music_tracks()
@@ -90,6 +92,8 @@ func warp_to_level(level_idx: int):
 				icePercent = 0
 			}
 			LevelManager.SetupLevel(Vector2(120, -120), Vector2(120, -120), [planet1], [], [Vector2(150, 0), Vector2(200, 100), Vector2(-200, -150)], [])
+			if LevelManager.completedLevels == 1:
+				LevelManager.completedLevels = 2
 			
 		Destinations.LVL_3:
 			AudioManager.play_all_music_tracks()
@@ -106,6 +110,8 @@ func warp_to_level(level_idx: int):
 				icePercent = 40
 			}
 			LevelManager.SetupLevel(Vector2(-120, 200), Vector2(100, -200), [planet1, planet2], [Vector2(300, 0), Vector2(0, 300)], [Vector2(150, 0), Vector2(200, 100)], [Vector2(-200, -150), Vector2(-200, 200)])
+			if LevelManager.completedLevels == 2:
+				LevelManager.completedLevels = 3
 			
 		Destinations.LVL_4:
 			AudioManager.play_all_music_tracks()
@@ -128,6 +134,8 @@ func warp_to_level(level_idx: int):
 				icePercent = 30
 			}
 			LevelManager.SetupLevel(Vector2(200, -120), Vector2(100, 200), [planet1, planet2, planet3], [Vector2(200, 0), Vector2(0, 300)], [Vector2(-150, 150), Vector2(200, -100)], [Vector2(-200, -150), Vector2(-150, 150)])
+			if LevelManager.completedLevels == 3:
+				LevelManager.completedLevels = 4
 			
 		Destinations.LVL_5:
 			AudioManager.play_all_music_tracks()
@@ -162,5 +170,7 @@ func warp_to_level(level_idx: int):
 				icePercent = 0
 			}
 			LevelManager.SetupLevel(Vector2(300, -420), Vector2(-300, -300), [planet1, planet2, planet3, planet4, planet5], [Vector2(-200, -300)], [Vector2(200, 100)], [Vector2(0, -150)])
+			if LevelManager.completedLevels == 4:
+				LevelManager.completedLevels = 5
 			
 			

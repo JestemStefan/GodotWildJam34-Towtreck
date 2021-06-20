@@ -7,12 +7,12 @@
 [ext_resource path="res://Player/Camera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://art/Background/Grid.png" type="Texture" id=6]
 
-[sub_resource type="PanoramaSky" id=1]
+[sub_resource type="PanoramaSky" id=4]
 panorama = ExtResource( 2 )
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=5]
 background_mode = 2
-background_sky = SubResource( 1 )
+background_sky = SubResource( 4 )
 background_sky_custom_fov = 70.0
 background_sky_orientation = Basis( -0.847882, -0.530186, -8.11248e-08, -0.491991, 0.7868, -0.37268, 0.19759, -0.315989, -0.92796 )
 background_energy = 2.0
@@ -30,25 +30,29 @@ albedo_texture = ExtResource( 6 )
 script = ExtResource( 4 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 5 )
 
 [node name="Warpgate" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, -76.5886, 0, -128.625 )
 
 [node name="Warpgate2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, 50.2825, 0, -128.625 )
+visible = false
 WarpTo = 2
 
 [node name="Warpgate3" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, 215.751, 0, -128.625 )
+visible = false
 WarpTo = 3
 
 [node name="Warpgate4" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, 226.547, 0, 15.887 )
+visible = false
 WarpTo = 4
 
 [node name="Warpgate5" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, 219.979, 0, 137.111 )
+visible = false
 WarpTo = 5
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
