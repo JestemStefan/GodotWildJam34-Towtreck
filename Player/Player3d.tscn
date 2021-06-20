@@ -177,6 +177,18 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="SpotLight" type="SpotLight" parent="ShipMesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.557636, 1.83482, -5.82306 )
+light_color = Color( 1, 0.882353, 0.427451, 1 )
+spot_range = 50.0
+spot_angle = 30.0
+
+[node name="SpotLight2" type="SpotLight" parent="ShipMesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.458281, 1.83482, -5.82306 )
+light_color = Color( 1, 0.882353, 0.427451, 1 )
+spot_range = 50.0
+spot_angle = 30.0
+
 [node name="StateMachine" type="Spatial" parent="."]
 script = ExtResource( 5 )
 
