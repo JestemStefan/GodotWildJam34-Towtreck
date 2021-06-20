@@ -35,6 +35,22 @@ environment = SubResource( 2 )
 [node name="Warpgate" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, -76.5886, 0, -128.625 )
 
+[node name="Warpgate2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, 50.2825, 0, -128.625 )
+WarpTo = 2
+
+[node name="Warpgate3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, 215.751, 0, -128.625 )
+WarpTo = 3
+
+[node name="Warpgate4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, 226.547, 0, 15.887 )
+WarpTo = 4
+
+[node name="Warpgate5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.571988, 0, 0.820262, 0, 1, 0, -0.820262, 0, 0.571988, 219.979, 0, 137.111 )
+WarpTo = 5
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.801205, 0.0574663, -0.595624, 0.181719, 0.925004, 0.333685, 0.570131, -0.375586, 0.730675, 0, 23.6353, 33.462 )
 
@@ -42,6 +58,7 @@ transform = Transform( 0.801205, 0.0574663, -0.595624, 0.181719, 0.925004, 0.333
 
 [node name="Camera" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 50, 0 )
+current = true
 playerPath = NodePath("../Player")
 
 [node name="Grid" type="Spatial" parent="."]

@@ -6,7 +6,7 @@ export var gate_rotation_speed: float = 1
 var isReadyToWarp: bool = false
 var markerType = 3
 
-enum Destinations{HUB, LVL_1}
+enum Destinations{HUB, LVL_1, LVL_2, LVL_3, LVL_4, LVL_5}
 export (Destinations) var WarpTo = Destinations.LVL_1
 
 var isEnabled: bool = false
@@ -78,19 +78,89 @@ func warp_to_level(level_idx: int):
 			get_tree().change_scene("res://Scenes/HubWorld/HubWorld.tscn")
 		
 		Destinations.LVL_1:
-			
 			AudioManager.play_all_music_tracks()
+			LevelManager.SetupLevel(Vector2(120, -120), Vector2(-120, 120), [], [], [], [])
 			
+		Destinations.LVL_2:
+			AudioManager.play_all_music_tracks()
 			var planet1 = {
-							orbit = 50,
-							icePercent = 20,
-							rocksPercent = 50,
-							hydrogenPercent = 30
-							}
+				orbit = 120,
+				rocksPercent = 100,
+				hydrogenPercent = 0,
+				icePercent = 0
+			}
+			LevelManager.SetupLevel(Vector2(120, -120), Vector2(120, -120), [planet1], [], [Vector2(150, 0), Vector2(200, 100), Vector2(-200, -150)], [])
+			
+		Destinations.LVL_3:
+			AudioManager.play_all_music_tracks()
+			var planet1 = {
+				orbit = 90,
+				rocksPercent = 20,
+				hydrogenPercent = 30,
+				icePercent = 50
+			}
 			var planet2 = {
-							orbit = 111,
-							icePercent = 50,
-							rocksPercent = 50,
-							hydrogenPercent = 0
-							}
-			LevelManager.SetupLevel(Vector2(60, 60), [planet1, planet2], [Vector2(-60, -60)], [Vector2(60, -60)], [Vector2(-60, 60)])
+				orbit = 150,
+				rocksPercent = 50,
+				hydrogenPercent = 10,
+				icePercent = 40
+			}
+			LevelManager.SetupLevel(Vector2(-120, 200), Vector2(100, -200), [planet1, planet2], [Vector2(300, 0), Vector2(0, 300)], [Vector2(150, 0), Vector2(200, 100)], [Vector2(-200, -150), Vector2(-200, 200)])
+			
+		Destinations.LVL_4:
+			AudioManager.play_all_music_tracks()
+			var planet1 = {
+				orbit = 90,
+				rocksPercent = 20,
+				hydrogenPercent = 30,
+				icePercent = 50
+			}
+			var planet2 = {
+				orbit = 120,
+				rocksPercent = 50,
+				hydrogenPercent = 10,
+				icePercent = 40
+			}
+			var planet3 = {
+				orbit = 180,
+				rocksPercent = 40,
+				hydrogenPercent = 30,
+				icePercent = 30
+			}
+			LevelManager.SetupLevel(Vector2(200, -120), Vector2(100, 200), [planet1, planet2, planet3], [Vector2(200, 0), Vector2(0, 300)], [Vector2(-150, 150), Vector2(200, -100)], [Vector2(-200, -150), Vector2(-150, 150)])
+			
+		Destinations.LVL_5:
+			AudioManager.play_all_music_tracks()
+			var planet1 = {
+				orbit = 50,
+				rocksPercent = 65,
+				hydrogenPercent = 25,
+				icePercent = 10
+			}
+			var planet2 = {
+				orbit = 90,
+				rocksPercent = 45,
+				hydrogenPercent = 40,
+				icePercent = 15
+			}
+			var planet3 = {
+				orbit = 150,
+				rocksPercent = 33,
+				hydrogenPercent = 0,
+				icePercent = 0
+			}
+			var planet4 = {
+				orbit = 200,
+				rocksPercent = 100,
+				hydrogenPercent = 0,
+				icePercent = 0
+			}
+			var planet5 = {
+				orbit = 300,
+				rocksPercent = 100,
+				hydrogenPercent = 0,
+				icePercent = 0
+			}
+			LevelManager.SetupLevel(Vector2(300, -420), Vector2(-300, -300), [planet1, planet2, planet3, planet4, planet5], [Vector2(-200, -300)], [Vector2(200, 100)], [Vector2(0, -150)])
+			
+			
