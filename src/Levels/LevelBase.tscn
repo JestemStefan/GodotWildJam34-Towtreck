@@ -27,7 +27,7 @@ glow_strength = 1.5
 [sub_resource type="SpatialMaterial" id=3]
 flags_transparent = true
 flags_unshaded = true
-albedo_color = Color( 1, 1, 1, 0.290196 )
+albedo_color = Color( 1, 1, 1, 0.156863 )
 albedo_texture = ExtResource( 9 )
 
 [node name="LevelBase" type="Spatial"]
