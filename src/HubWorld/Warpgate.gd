@@ -20,7 +20,23 @@ func _ready():
 	
 	else:
 		LevelManager.warp_to_hub = self
-
+	
+	var label = $Viewport/Label
+#	label.rect_position = get_viewport().get_camera().unproject_position(global_transform.origin)
+	match WarpTo:
+		Destinations.HUB:
+			label.text = "Warp to mission hub" + (" closed" if !isEnabled else "")
+		Destinations.LVL_1:
+			label.text = "Warp to mission 1"
+		Destinations.LVL_2:
+			label.text = "Warp to mission 2"
+		Destinations.LVL_3:
+			label.text = "Warp to mission 3"
+		Destinations.LVL_4:
+			label.text = "Warp to mission 4"
+		Destinations.LVL_5:
+			label.text = "Warp to mission 5"
+			
 
 func _process(delta):
 	
@@ -32,6 +48,9 @@ func _process(delta):
 			
 			if Input.is_action_just_pressed("select"):
 				warp_to_level(WarpTo)
+				
+	if WarpTo == Destinations.HUB:
+		$Viewport/Label.text = "Warp to mission hub" + (" closed" if !isEnabled else "")
 
 func open_warpgate():
 	isReadyToWarp = true
@@ -78,13 +97,21 @@ func warp_to_level(level_idx: int):
 			get_tree().change_scene("res://Scenes/HubWorld/HubWorld.tscn")
 		
 		Destinations.LVL_1:
-			AudioManager.play_all_music_tracks()
+			AudioManager.play_single_music_track(0)
+			AudioManager.stop_single_music_track(1)
+			AudioManager.stop_single_music_track(2)
+			AudioManager.stop_single_music_track(3)
+			
 			LevelManager.SetupLevel(Vector2(120, -120), Vector2(-120, 120), [], [], [], [])
 			if LevelManager.completedLevels == 0:
 				LevelManager.completedLevels = 1
 			
 		Destinations.LVL_2:
-			AudioManager.play_all_music_tracks()
+			AudioManager.play_single_music_track(0)
+			AudioManager.stop_single_music_track(1)
+			AudioManager.stop_single_music_track(2)
+			AudioManager.stop_single_music_track(3)
+			
 			var planet1 = {
 				orbit = 120,
 				rocksPercent = 100,
@@ -96,7 +123,11 @@ func warp_to_level(level_idx: int):
 				LevelManager.completedLevels = 2
 			
 		Destinations.LVL_3:
-			AudioManager.play_all_music_tracks()
+			AudioManager.play_single_music_track(0)
+			AudioManager.stop_single_music_track(1)
+			AudioManager.stop_single_music_track(2)
+			AudioManager.stop_single_music_track(3)
+			
 			var planet1 = {
 				orbit = 90,
 				rocksPercent = 20,
@@ -114,7 +145,11 @@ func warp_to_level(level_idx: int):
 				LevelManager.completedLevels = 3
 			
 		Destinations.LVL_4:
-			AudioManager.play_all_music_tracks()
+			AudioManager.play_single_music_track(0)
+			AudioManager.stop_single_music_track(1)
+			AudioManager.stop_single_music_track(2)
+			AudioManager.stop_single_music_track(3)
+			
 			var planet1 = {
 				orbit = 90,
 				rocksPercent = 20,
@@ -138,7 +173,11 @@ func warp_to_level(level_idx: int):
 				LevelManager.completedLevels = 4
 			
 		Destinations.LVL_5:
-			AudioManager.play_all_music_tracks()
+			AudioManager.play_single_music_track(0)
+			AudioManager.stop_single_music_track(1)
+			AudioManager.stop_single_music_track(2)
+			AudioManager.stop_single_music_track(3)
+			
 			var planet1 = {
 				orbit = 50,
 				rocksPercent = 65,
