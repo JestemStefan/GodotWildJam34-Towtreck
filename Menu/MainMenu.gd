@@ -8,7 +8,6 @@ func _onStartButtonPressed():
 	
 	AudioManager.play_single_music_track(0)
 	AudioManager.play_single_music_track(1)
-	AudioManager.play_single_music_track(2)
 	
 	get_tree().change_scene("res://Scenes/HubWorld/HubWorld.tscn")
 
