@@ -6,7 +6,7 @@ export var gate_rotation_speed: float = 1
 var isReadyToWarp: bool = false
 var markerType = 3
 
-enum Destinations{HUB, LVL_1, LVL_2, LVL_3, LVL_4, LVL_5}
+enum Destinations{HUB, LVL_1, LVL_2, LVL_3, LVL_4}
 export (Destinations) var WarpTo = Destinations.LVL_1
 
 onready var sfx_passive: AudioStreamSample = preload("res://Audio/SFX/GWJ34_WarpPassiveLoop.wav")
@@ -37,8 +37,6 @@ func _ready():
 			label.text = "Warp to mission 3"
 		Destinations.LVL_4:
 			label.text = "Warp to mission 4"
-		Destinations.LVL_5:
-			label.text = "Warp to mission 5"
 			
 
 func _process(delta):
@@ -109,9 +107,9 @@ func warp_to_level(level_idx: int):
 			AudioManager.stop_single_music_track(2)
 			AudioManager.stop_single_music_track(3)
 			
-			LevelManager.SetupLevel(Vector2(120, -120), Vector2(-120, 120), [], [], [], [])
 			if LevelManager.completedLevels == 0:
 				LevelManager.completedLevels = 1
+			LevelManager.SetupLevel(Vector2(120, -120), Vector2(-120, 120), [], [], [], [])
 			
 		Destinations.LVL_2:
 			AudioManager.play_single_music_track(0)
@@ -125,9 +123,9 @@ func warp_to_level(level_idx: int):
 				hydrogenPercent = 0,
 				icePercent = 0
 			}
-			LevelManager.SetupLevel(Vector2(120, -120), Vector2(120, -120), [planet1], [], [Vector2(150, 0), Vector2(200, 100), Vector2(-200, -150)], [])
 			if LevelManager.completedLevels == 1:
 				LevelManager.completedLevels = 2
+			LevelManager.SetupLevel(Vector2(120, -120), Vector2(120, -120), [planet1], [], [Vector2(150, 0), Vector2(200, 100), Vector2(-200, -150)], [])
 			
 		Destinations.LVL_3:
 			AudioManager.play_single_music_track(0)
@@ -147,9 +145,15 @@ func warp_to_level(level_idx: int):
 				hydrogenPercent = 10,
 				icePercent = 40
 			}
-			LevelManager.SetupLevel(Vector2(-120, 200), Vector2(100, -200), [planet1, planet2], [Vector2(300, 0), Vector2(0, 300)], [Vector2(150, 0), Vector2(200, 100)], [Vector2(-200, -150), Vector2(-200, 200)])
+			var planet3 = {
+				orbit = 200,
+				rockPercent = 25,
+				hydrogenPercent = 25,
+				icePercent = 50
+			}
 			if LevelManager.completedLevels == 2:
 				LevelManager.completedLevels = 3
+			LevelManager.SetupLevel(Vector2(-120, 200), Vector2(100, -200), [planet1, planet2, planet3], [Vector2(300, 0), Vector2(0, 300)], [Vector2(150, 0), Vector2(200, 100)], [Vector2(-200, -150), Vector2(-200, 200)])
 			
 		Destinations.LVL_4:
 			AudioManager.play_single_music_track(0)
@@ -158,7 +162,7 @@ func warp_to_level(level_idx: int):
 			AudioManager.stop_single_music_track(3)
 			
 			var planet1 = {
-				orbit = 90,
+				orbit = 80,
 				rocksPercent = 20,
 				hydrogenPercent = 30,
 				icePercent = 50
@@ -172,51 +176,23 @@ func warp_to_level(level_idx: int):
 			var planet3 = {
 				orbit = 180,
 				rocksPercent = 40,
-				hydrogenPercent = 30,
-				icePercent = 30
-			}
-			LevelManager.SetupLevel(Vector2(200, -120), Vector2(100, 200), [planet1, planet2, planet3], [Vector2(200, 0), Vector2(0, 300)], [Vector2(-150, 150), Vector2(200, -100)], [Vector2(-200, -150), Vector2(-150, 150)])
-			if LevelManager.completedLevels == 3:
-				LevelManager.completedLevels = 4
-			
-		Destinations.LVL_5:
-			AudioManager.play_single_music_track(0)
-			AudioManager.stop_single_music_track(1)
-			AudioManager.stop_single_music_track(2)
-			AudioManager.stop_single_music_track(3)
-			
-			var planet1 = {
-				orbit = 50,
-				rocksPercent = 65,
-				hydrogenPercent = 25,
-				icePercent = 10
-			}
-			var planet2 = {
-				orbit = 90,
-				rocksPercent = 45,
-				hydrogenPercent = 40,
-				icePercent = 15
-			}
-			var planet3 = {
-				orbit = 150,
-				rocksPercent = 33,
-				hydrogenPercent = 0,
-				icePercent = 0
+				hydrogenPercent = 35,
+				icePercent = 25
 			}
 			var planet4 = {
-				orbit = 200,
-				rocksPercent = 100,
-				hydrogenPercent = 0,
-				icePercent = 0
+				orbit = 250,
+				rocksPercent = 35,
+				hydrogenPercent = 35,
+				icePercent = 30
 			}
 			var planet5 = {
-				orbit = 300,
-				rocksPercent = 100,
-				hydrogenPercent = 0,
-				icePercent = 0
+				orbit = 330,
+				rocksPercent = 45,
+				hydrogenPercent = 15,
+				icePercent = 40
 			}
-			LevelManager.SetupLevel(Vector2(300, -420), Vector2(-300, -300), [planet1, planet2, planet3, planet4, planet5], [Vector2(-200, -300)], [Vector2(200, 100)], [Vector2(0, -150)])
-			if LevelManager.completedLevels == 4:
-				LevelManager.completedLevels = 5
+			if LevelManager.completedLevels == 3:
+				LevelManager.completedLevels = 4
+			LevelManager.SetupLevel(Vector2(200, -120), Vector2(100, 200), [planet1, planet2, planet3, planet4, planet5], [Vector2(200, 0), Vector2(100, 300)], [Vector2(-350, 150), Vector2(200, -100)], [Vector2(-200, -150), Vector2(-150, 350)])
 			
 			

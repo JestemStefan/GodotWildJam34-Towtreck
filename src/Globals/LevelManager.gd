@@ -15,7 +15,7 @@ var sunSpotPack = preload("res://Scenes/LevelElements/SunSpotArea.tscn")
 var growingTrailerPack = preload("res://Scenes/Trailer/GrowingTrailer.tscn")
 var resourceCloudPack = preload("res://World/Resources/Resource.tscn")
 
-var orbit_spacing: float = 25
+var orbit_spacing: float = 15
 
 var isSunPlacedCorrectly: bool = false
 
