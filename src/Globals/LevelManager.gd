@@ -27,8 +27,17 @@ func _process(delta):
 	if !is_instance_valid(current_level) or current_level is HubWorld:
 		return
 	
-	if is_instance_valid(objectivesUI) and objectivesUI.AllDone():
-		warp_to_hub.enable()
+	if is_instance_valid(objectivesUI):
+		if objectivesUI.AllDone():
+			warp_to_hub.enable()
+			
+		var percentDone = objectivesUI.PercentageDone()
+		if percentDone >= 25:
+			AudioManager.play_single_music_track(1)
+		if percentDone >= 50:
+			AudioManager.play_single_music_track(2)
+		if percentDone >= 75:
+			AudioManager.play_single_music_track(3)
 		
 	for planet in occupied_orbits:
 		var orbit = occupied_orbits[planet]

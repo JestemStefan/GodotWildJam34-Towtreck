@@ -25,3 +25,14 @@ func AllDone():
 				return false
 		return true
 	return false
+
+func PercentageDone():
+	if objectives.size() == 0:
+		return 0
+	
+	var done = 0
+	for obj in objectives.values():
+		if obj.isDone:
+			done += 1
+			
+	return round(done * 100 / objectives.size())
