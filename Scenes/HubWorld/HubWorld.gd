@@ -12,8 +12,6 @@ func _ready():
 	if LevelManager.completedLevels > 2:
 		$Warpgate4.show()
 	if LevelManager.completedLevels > 3:
-		$Warpgate5.show()
-	if LevelManager.completedLevels > 4:
 		get_tree().change_scene("res://art/EndGameScene/EndGameScene.tscn")
 
 func rotate_background(rot: Vector3):
