@@ -6,6 +6,7 @@ onready var player = $Player
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	LevelManager.current_level = self
+	LevelManager.isConfettiReady = true
 
 func add_child(child: Node, legible_unique_name = false):
 	.add_child(child, legible_unique_name)

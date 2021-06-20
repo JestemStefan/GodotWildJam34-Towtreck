@@ -23,6 +23,10 @@ var completedLevels = 0
 
 var orbit_tasks: Array = []
 
+var isConfettiReady: bool = true
+onready var confetti_instance: PackedScene = preload("res://art/Confetti/Confetti.tscn")
+
+
 func _process(delta):
 	if !is_instance_valid(current_level) or current_level is HubWorld:
 		return
@@ -30,6 +34,11 @@ func _process(delta):
 	if is_instance_valid(objectivesUI):
 		if objectivesUI.AllDone():
 			warp_to_hub.enable()
+			if isConfettiReady:
+				isConfettiReady = false
+				var confetti: Node2D = confetti_instance.instance()
+				current_level.add_child(confetti)
+				confetti.play_once()
 			
 		var percentDone = objectivesUI.PercentageDone()
 		if percentDone >= 25:
@@ -38,7 +47,7 @@ func _process(delta):
 			AudioManager.play_single_music_track(2)
 		if percentDone >= 75:
 			AudioManager.play_single_music_track(3)
-		
+			
 	for planet in occupied_orbits:
 		var orbit = occupied_orbits[planet]
 		for template in orbit_tasks:
