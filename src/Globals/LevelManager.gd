@@ -19,6 +19,8 @@ var orbit_spacing: float = 25
 
 var isSunPlacedCorrectly: bool = false
 
+var completedLevels = 0
+
 var orbit_tasks: Array = []
 
 func _process(delta):

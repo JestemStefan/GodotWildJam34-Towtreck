@@ -31,7 +31,7 @@ emission_on_uv2 = false
 emission_texture = SubResource( 4 )
 
 [sub_resource type="SphereShape" id=6]
-radius = 35.0
+radius = 40.0
 
 [node name="Sun" type="KinematicBody"]
 script = ExtResource( 1 )
